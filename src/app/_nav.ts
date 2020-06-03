@@ -124,6 +124,11 @@ export const navItems: INavData[] = [
         icon: 'icon-star'
       },
       {
+        name: 'Roles',
+        url: '/icons/roles',
+        icon: 'icon-star'
+      },
+      {
         name: 'Font Awesome',
         url: '/icons/font-awesome',
         icon: 'icon-star',
