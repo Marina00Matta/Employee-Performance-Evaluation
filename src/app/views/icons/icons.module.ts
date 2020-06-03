@@ -19,3 +19,4 @@ import { IconsRoutingModule } from './icons-routing.module';
   ]
 })
 export class IconsModule { }
+

@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(){
   }
 
+  
   submit(data){
     this.login.login(data).then(result=>{
       this.error=(result)?true:false;
