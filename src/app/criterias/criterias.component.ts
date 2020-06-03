@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CriteriasService } from './criterias.service'
+
+import { NgModule } from '@angular/core';
+
+import { CriteriasService } from './criterias.service';
+
 @Component({
-  // selector: 'app-criterias',
+  selector: 'app-criterias',
   templateUrl: './criterias.component.html'
 })
 export class CriteriasComponent implements OnInit {

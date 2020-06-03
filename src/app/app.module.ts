@@ -58,7 +58,7 @@ import { CriteriasComponent } from './criterias/criterias.component';
     TabsModule.forRoot(),
     ChartsModule,
     HttpClientModule,
-    // CriteriasModule,
+    CriteriasModule,
   ],
   declarations: [
     AppComponent,
@@ -67,7 +67,7 @@ import { CriteriasComponent } from './criterias/criterias.component';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    // CriteriasComponent
+    CriteriasComponent
   ],
   providers: [{
     provide: LocationStrategy,
