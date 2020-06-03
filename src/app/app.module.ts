@@ -8,7 +8,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CriteriasModule } from './criterias/criterias.module' ;
+// import { CriteriasModule } from './criterias/criterias.module' ;
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   
@@ -40,14 +40,14 @@ import {
 
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
-import { CriteriasService } from './criterias/criterias.service';
+import { CriteriasService } from './views/base/criterias/criterias.service';
 
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
-import { CriteriasComponent } from './criterias/criterias.component';
+// import { CriteriasComponent } from './criterias/criterias.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -65,7 +65,7 @@ import { CriteriasComponent } from './criterias/criterias.component';
     TabsModule.forRoot(),
     ChartsModule,
     HttpClientModule,
-    CriteriasModule,
+    // CriteriasModule,
   ],
   declarations: [
     AppComponent,
@@ -74,7 +74,7 @@ import { CriteriasComponent } from './criterias/criterias.component';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    CriteriasComponent
+    // CriteriasComponent
   ],
   providers: [{
     provide: LocationStrategy,

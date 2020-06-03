@@ -13,7 +13,8 @@ import { PopoversComponent } from './popovers.component';
 import { ProgressComponent } from './progress.component';
 import { TooltipsComponent } from './tooltips.component';
 import { NavbarsComponent } from './navbars/navbars.component';
-
+import { CriteriasComponent } from './criterias/criterias.component';
+ 
 const routes: Routes = [
   {
     path: '',
@@ -37,6 +38,13 @@ const routes: Routes = [
         component: FormsComponent,
         data: {
           title: 'Forms'
+        }
+      },
+      {
+        path: 'criteria',
+        component: CriteriasComponent,
+        data: {
+          title: 'criteria'
         }
       },
       {
