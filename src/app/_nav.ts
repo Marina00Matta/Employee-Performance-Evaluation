@@ -122,10 +122,16 @@ export const navItems: INavData[] = [
           variant: 'success',
           text: 'NEW'
         }
-      },
+      }
+      ,
       {
         name: 'Flags',
         url: '/icons/flags',
+        icon: 'icon-star'
+      },
+      {
+        name: 'Roles',
+        url: '/icons/roles',
         icon: 'icon-star'
       },
       {
