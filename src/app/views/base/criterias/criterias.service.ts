@@ -13,4 +13,10 @@ export class CriteriasService {
   getCriteria() {
     return this._http.get(`${this._apiUrl}s`)
   }
+  getCriteriaTypes(){
+    return this._http.get('http://localhost:8000/api/criteriatypes');
+  }
+  deleteCriteria(id){
+    return this._http.delete(`${this._apiUrl}/${id}`)
+  }
 }
