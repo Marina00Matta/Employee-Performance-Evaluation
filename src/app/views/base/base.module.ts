@@ -48,6 +48,13 @@ import { NavbarsComponent } from './navbars/navbars.component';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 
+import { CriteriasComponent } from './criterias/criterias.component';
+// import { CriteriasModule } from './criterias/criterias.module'; 
+import { CriteriasService } from './criterias/criterias.service';
+import { IndicatorsComponent } from './indicators/indicators.component';
+import { IndicatorsService } from './indicators/indicators.service';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -60,7 +67,7 @@ import { BaseRoutingModule } from './base-routing.module';
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
   ],
   declarations: [
     CardsComponent,
@@ -74,7 +81,13 @@ import { BaseRoutingModule } from './base-routing.module';
     PopoversComponent,
     ProgressComponent,
     TooltipsComponent,
-    NavbarsComponent
-  ]
+    NavbarsComponent,
+    CriteriasComponent,
+    IndicatorsComponent,
+  ],
+  providers: [
+    CriteriasService,
+    IndicatorsService,
+  ],
 })
 export class BaseModule { }
