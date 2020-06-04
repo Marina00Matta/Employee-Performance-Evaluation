@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-import { CriteriasComponent } from './criterias/criterias.component';
+// import { CriteriasComponent } from './criterias/criterias.component';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
@@ -15,13 +15,13 @@ export const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
-  {
-    path:'criteria',
-    component: CriteriasComponent ,
-    data: {
-      title: "Criteria"
-    }
-  },
+  // {
+  //   path:'criteria',
+  //   component: CriteriasComponent ,
+  //   data: {
+  //     title: "Criteria"
+  //   }
+  // },
   {
     path: '404',
     component: P404Component,
@@ -61,10 +61,10 @@ export const routes: Routes = [
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },
-      {
-        path: 'criteria',
-        loadChildren: () => import('./criterias/criterias.module').then(m => m.CriteriasModule),
-      },
+      // {
+      //   path: 'criteria',
+      //   loadChildren: () => import('./views/base/criterias/criterias.module').then(m => m.CriteriasModule),
+      // },
       {
         path: 'buttons',
         loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)

@@ -5,6 +5,7 @@ import { CoreUIIconsComponent } from './coreui-icons.component';
 import { FlagsComponent } from './flags.component';
 import { FontAwesomeComponent } from './font-awesome.component';
 import { SimpleLineIconsComponent } from './simple-line-icons.component';
+import { RolesComponent } from './roles.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,15 @@ const routes: Routes = [
         data: {
           title: 'Simple Line Icons'
         }
-      }
+      },
+      {
+        path: 'roles',
+        component: RolesComponent,
+        data: {
+          title: 'Roles'
+        }
+      },
+
     ]
   }
 ];
@@ -54,3 +63,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class IconsRoutingModule {}
+
