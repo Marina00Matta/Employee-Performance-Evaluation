@@ -11,6 +11,7 @@ export class CriteriasService {
   constructor(private _http: HttpClient) { }
 
   getCriteria() {
+    //debugger
     return this._http.get(`${this._apiUrl}s`)
   }
   getCriteriaTypes(){
