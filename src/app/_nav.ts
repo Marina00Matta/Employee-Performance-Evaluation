@@ -15,11 +15,6 @@ export const navItems: INavData[] = [
     name: 'Components'
   },
   {
-    name: 'criteria',
-    url: '/criteria',
-    icon: 'icon-puzzle',
-  },
-  {
     name: 'Base',
     url: '/base',
     icon: 'icon-puzzle',
@@ -32,6 +27,11 @@ export const navItems: INavData[] = [
       {
         name: 'Criterias',
         url: '/base/criteria',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Indicators',
+        url: '/base/indicator',
         icon: 'icon-puzzle'
       },
       {

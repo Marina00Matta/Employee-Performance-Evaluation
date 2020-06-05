@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   
   submit(data){
     this.login.login(data).then(result=>{
-      this.error=(result)?true:false;
+      console.log(result);
     })
   }
 
