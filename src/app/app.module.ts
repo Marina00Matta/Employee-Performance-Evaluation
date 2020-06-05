@@ -40,14 +40,13 @@ import {
 
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
-import { CriteriasService } from './views/base/criterias/criterias.service';
+// import { CriteriasService } from './criterias/criterias.service';
 
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
-// import { CriteriasComponent } from './criterias/criterias.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -65,7 +64,7 @@ import { HttpClientModule } from '@angular/common/http';
     TabsModule.forRoot(),
     ChartsModule,
     HttpClientModule,
-    // CriteriasModule,
+    
   ],
   declarations: [
     AppComponent,
@@ -79,8 +78,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
-  },
-  // CriteriasService,
+  }
   ],
   bootstrap: [ AppComponent ]
 })

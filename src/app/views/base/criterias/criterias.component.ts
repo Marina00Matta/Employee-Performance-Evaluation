@@ -10,6 +10,7 @@ import { CriteriasService } from './criterias.service';
 })
 export class CriteriasComponent implements OnInit {
   criterias;
+  types;  
   constructor(private _criteriasService: CriteriasService,) { }
 
   ngOnInit(): void {
@@ -17,6 +18,14 @@ export class CriteriasComponent implements OnInit {
       console.log(data)
       this.criterias = data;
     })
+    this._criteriasService.getCriteriaTypes().subscribe(dataType =>{
+      console.log(dataType)
+      this.types = dataType;
+    })
+  }
+  deleteFunction(id){
+    this._criteriasService.deleteCriteria(id).subscribe(()=>console.log('deleted'));
+          console.log(id);
   }
 
 }

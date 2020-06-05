@@ -14,7 +14,8 @@ import { ProgressComponent } from './progress.component';
 import { TooltipsComponent } from './tooltips.component';
 import { NavbarsComponent } from './navbars/navbars.component';
 import { CriteriasComponent } from './criterias/criterias.component';
- 
+import { IndicatorsComponent } from './indicators/indicators.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -45,6 +46,13 @@ const routes: Routes = [
         component: CriteriasComponent,
         data: {
           title: 'criteria'
+        }
+      },
+      {
+        path: 'indicator',
+        component: IndicatorsComponent,
+        data: {
+          title: 'indicators'
         }
       },
       {

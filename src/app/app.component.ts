@@ -13,10 +13,9 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private http:HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:8000/api/indicators').subscribe((evt) => {
+    // this.http.get('http://localhost:8000/api/indicators').subscribe((evt) => {
      
-     console.log(evt);
-     
-    });
+    //  console.log(evt);
+    // });
   }
 }
