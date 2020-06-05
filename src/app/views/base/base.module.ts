@@ -53,6 +53,7 @@ import { CriteriasComponent } from './criterias/criterias.component';
 import { CriteriasService } from './criterias/criterias.service';
 import { IndicatorsComponent } from './indicators/indicators.component';
 import { IndicatorsService } from './indicators/indicators.service';
+import { CriteriaFormsComponent } from './criteria-forms/criteria-forms.component';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { IndicatorsService } from './indicators/indicators.service';
     NavbarsComponent,
     CriteriasComponent,
     IndicatorsComponent,
+    CriteriaFormsComponent,
   ],
   providers: [
     CriteriasService,
