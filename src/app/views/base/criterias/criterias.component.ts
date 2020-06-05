@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 
-import { CriteriasService } from './criterias.service';
+import { CriteriasService } from '../../../services/criterias.service';
 @Component({
   selector: 'app-criterias',
   templateUrl: './criterias.component.html'

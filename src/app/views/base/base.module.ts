@@ -50,9 +50,9 @@ import { BaseRoutingModule } from './base-routing.module';
 
 import { CriteriasComponent } from './criterias/criterias.component';
 // import { CriteriasModule } from './criterias/criterias.module'; 
-import { CriteriasService } from './criterias/criterias.service';
+import { CriteriasService } from '../../services/criterias.service';
 import { IndicatorsComponent } from './indicators/indicators.component';
-import { IndicatorsService } from './indicators/indicators.service';
+import { IndicatorsService } from '../../services/indicators.service';
 
 
 @NgModule({
