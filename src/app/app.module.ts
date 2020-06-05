@@ -7,11 +7,12 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { InterceptorService } from './services/interceptor.service';
 
 // import { CriteriasModule } from './criterias/criterias.module' ;
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  
+
   suppressScrollX: true
 };
 
@@ -35,18 +36,19 @@ import {
   AppHeaderModule,
   AppFooterModule,
   AppSidebarModule,
- 
+
 } from '@coreui/angular';
 
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
 // import { CriteriasService } from './criterias/criterias.service';
+import { CookieService } from 'ngx-cookie-service';
 
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   imports: [
     BrowserModule,
@@ -64,7 +66,7 @@ import { HttpClientModule } from '@angular/common/http';
     TabsModule.forRoot(),
     ChartsModule,
     HttpClientModule,
-    
+
   ],
   declarations: [
     AppComponent,
@@ -75,11 +77,20 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     // CriteriasComponent
   ],
-  providers: [{
+  providers: [
+      CookieService ,
+    {
+
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
+    
+  },{
+    provide:HTTP_INTERCEPTORS,
+    useClass:InterceptorService,
+    multi: true,
   }
   ],
   bootstrap: [ AppComponent ]
+
 })
 export class AppModule { }

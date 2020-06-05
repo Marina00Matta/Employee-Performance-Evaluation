@@ -11,14 +11,20 @@ export class IndicatorsComponent implements OnInit {
   constructor(private _indicatorService: IndicatorsService) { }
 
   ngOnInit(): void {
+    this.getIndicatorList();
+  }
+
+  deleteIndicator(id){
+    this._indicatorService.deleteIndicator(id).subscribe(() =>{})
+    console.log(id)
+    this.getIndicatorList();
+  }
+
+  getIndicatorList(){
     this._indicatorService.getIndicators().subscribe(data =>{
       console.log(data)
       this.indicators = data;
     })
-  }
-  deleteIndicator(id){
-    this._indicatorService.deleteIndicator(id).subscribe(() =>{})
-      console.log(id)
   }
 
 }
