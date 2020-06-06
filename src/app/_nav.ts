@@ -40,6 +40,11 @@ export const navItems: INavData[] = [
         icon: 'icon-puzzle'
       },
       {
+        name: 'IndicatorForms',
+        url: '/base/indicator-forms',
+        icon: 'icon-puzzle'
+      },
+      {
         name: 'Carousels',
         url: '/base/carousels',
         icon: 'icon-puzzle'

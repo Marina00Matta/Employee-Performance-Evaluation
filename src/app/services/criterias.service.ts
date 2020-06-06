@@ -20,4 +20,7 @@ export class CriteriasService {
   deleteCriteria(id){
     return this._http.delete(`${this._apiUrl}/${id}`)
   }
+  addCriteria(criteria){
+    return this._http.post(this._apiUrl,criteria)
+  }
 }

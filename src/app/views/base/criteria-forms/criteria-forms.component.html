@@ -8,21 +8,27 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="Criteria">Criteria Name</label>
             <div class="col-md-9">
-              <input type="text" ngModel id="Criteria" name="name" class="form-control" placeholder="Criteria Name" required>
+              <input type="text" ngModel id="criteriaName" name="name" class="form-control" placeholder="Criteria Name"
+               #nameRef="ngModel" required>
+               <div *ngIf="nameRef.touched && nameRef.invalid" class="alert alert-danger" >
+                 Name is required
+               </div>
               <!-- <span class="help-block">Please enter your email</span> -->
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="criteriatype">Type</label>
-            <div class="col-md-9">
-              <select id="criteriatype" ngModel name="type_id" class="form-control">
+            <div class="col-md-9">  
+              <select id="criteriaType" ngModel name="type_id" class="form-control" 
+              #typeIdRef="ngModel" required>
                 <option *ngFor="let type of types" value={{type.id}}>{{type.type}}</option>
-                <!-- <option value="2">Average</option>
-                <option value="3">Mathematical</option> -->
               </select>
+              <div *ngIf="typeIdRef.touched && typeIdRef.invalid" class="alert alert-danger" >
+                Type is required
+              </div>
             </div>
         </div>
-          <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="submit" class="btn btn-md btn-primary" [disabled]="newCriteriaForm.invalid"><i class="fa fa-dot-circle-o"></i> Submit</button>
         </form>
 
       </div>

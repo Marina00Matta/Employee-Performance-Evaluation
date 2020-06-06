@@ -1,0 +1,44 @@
+<div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <strong>Indicator Form</strong> Form
+      </div>
+      <div class="card-body">
+        <form #newIndicatorForm = "ngForm"  (ngSubmit)="onSubmit(newIndicatorForm)" class="form-horizontal">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="Indicator">Indicator Name</label>
+            <div class="col-md-9">
+              <input type="text" ngModel id="indicatorName" name="name" class="form-control" placeholder="Indicator Name"
+               #nameRef="ngModel" required minlength="3">
+               <div *ngIf="nameRef.touched && nameRef.invalid" class="alert alert-danger" >
+                 Name is required
+               </div>
+               <!-- <div *ngIf="nameRef.errors.minlength" class="alert alert-danger" >
+                Name must be at least 3
+              </div> -->
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="criteria">Type</label>
+            <div class="col-md-9">  
+              <select id="criteria" ngModel name="criteria_id" class="form-control" 
+              #criteriaIdRef="ngModel" required>
+                <option *ngFor="let criteria of criterias" value={{criteria.id}}>{{criteria.name}}</option>
+              </select>
+              <div *ngIf="criteriaIdRef.touched && criteriaIdRef.invalid" class="alert alert-danger" >
+                Criteria is required
+              </div>
+        
+            </div>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" ngModel name="is_positive" id="isPositive" >
+            <label class="form-check-label" for="isPositive">
+              Is positive
+            </label>
+          </div>
+          <button type="submit" class="btn btn-md btn-primary" ><i class="fa fa-dot-circle-o"></i> Submit</button>
+        </form>
+
+      </div>
+    </div>
