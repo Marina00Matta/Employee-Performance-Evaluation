@@ -20,8 +20,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of users">
-                <ng-template [ngIf]="user.name!=='Superadmin'">
+              <tr *ngFor="let user of users" [ngIf]="user.name!=='Superadmin'">{{user.name}}>
+                <!-- <ng-template [ngIf]="user.name!=='Superadmin'"> -->
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <!-- <td>{{user.hiring-date}}</td> -->
@@ -38,7 +38,7 @@
                     <button type="button" class="btn btn-block btn-danger" (click) = deleteUser(user.id)>Delete</button>
                   </div>
               </td>
-            </ng-template>
+            <!-- </ng-template> -->
               </tr>
             </tbody>
           </table>

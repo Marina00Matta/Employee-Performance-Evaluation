@@ -2,6 +2,8 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import {ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { CardsComponent } from './cards.component';
 
@@ -41,6 +43,9 @@ import { ProgressComponent } from './progress.component';
 // Tooltip Component
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TooltipsComponent } from './tooltips.component';
+import { DataTablesModule } from 'angular-datatables';
+import { DatePipe } from '@angular/common';
+
 
 // navbars
 import { NavbarsComponent } from './navbars/navbars.component';
@@ -57,15 +62,20 @@ import { RolesComponent } from './roles/roles.component';
 import { RoleFormComponent } from './role-form/role-form.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users-form/users-form.component';
+import { EvaluationCycleService } from './EvaluationCycle/EvaluationCycle.service';
+import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     BaseRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule,
+    ModalModule.forRoot(),
+    DataTablesModule.forRoot(),
     CarouselModule.forRoot(),
     CollapseModule.forRoot(),
     PaginationModule.forRoot(),
@@ -93,10 +103,13 @@ import { UsersFormComponent } from './users-form/users-form.component';
     RoleFormComponent,
     UsersComponent,
     UsersFormComponent,
+    EvaluationCycleComponent,
   ],
   providers: [
     CriteriasService,
-    IndicatorsService,
+    IndicatorsService,   
+    EvaluationCycleService,
+    DatePipe
   ],
 })
 export class BaseModule { }

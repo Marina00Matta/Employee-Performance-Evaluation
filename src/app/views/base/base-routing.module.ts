@@ -20,6 +20,7 @@ import { RoleFormComponent } from './role-form/role-form.component';
 import { RolesComponent } from './roles/roles.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users-form/users-form.component';
+import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.component';
 
 
 const routes: Routes = [
@@ -94,6 +95,13 @@ const routes: Routes = [
         component: RoleFormComponent,
         data: {
           title: 'position-forms'
+        }
+      },
+      {
+        path: 'EvaluationCycle',
+        component: EvaluationCycleComponent,
+        data: {
+          title: 'EvaluationCycle'
         }
       },
       {

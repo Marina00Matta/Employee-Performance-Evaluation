@@ -21,7 +21,7 @@ export class LoginService {
         })
         .toPromise()
         .then(() => {
-          console.log('login request ======================================>1');
+          console.log('login request ======================================');
           let xsrfToken = this.cookieService.get('XSRF-TOKEN');
           console.log('xsrfToken',xsrfToken)
           sessionStorage.setItem('XSRF-TOKEN',xsrfToken) ;

@@ -4,7 +4,7 @@
         <strong>User</strong> Form
       </div>
       <div class="card-body">
-        <form #newUserForm = "ngForm"  (ngSubmit)="addUser(newUserForm)" class="form-horizontal">
+        <form #newUserForm = "ngForm" enctype="multipart/form-data" (ngSubmit)="addUser(newUserForm)" class="form-horizontal">
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="user">Employee Name</label>
             <div class="col-md-9">

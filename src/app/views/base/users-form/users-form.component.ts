@@ -23,7 +23,11 @@ export class UsersFormComponent implements OnInit {
 
   addUser(form: NgForm){
     if(form.valid){
+      this._userservice.addUser(form.value).subscribe((res: any) => {
+        console.log(res);
+      })
       console.log(form.value);
     }
+    form.reset;
   }
 }
