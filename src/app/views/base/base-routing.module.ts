@@ -15,6 +15,7 @@ import { TooltipsComponent } from './tooltips.component';
 import { NavbarsComponent } from './navbars/navbars.component';
 import { CriteriasComponent } from './criterias/criterias.component';
 import { IndicatorsComponent } from './indicators/indicators.component';
+import { CriteriaFormsComponent } from './criteria-forms/criteria-forms.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,13 @@ const routes: Routes = [
         component: CriteriasComponent,
         data: {
           title: 'criteria'
+        }
+      },
+      {
+        path: 'criteria-forms',
+        component: CriteriaFormsComponent,
+        data: {
+          title: 'criteria-forms'
         }
       },
       {

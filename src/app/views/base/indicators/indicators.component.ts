@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IndicatorsService } from './indicators.service';
+import { IndicatorsService } from '../../../services/indicators.service';
 
 @Component({
   selector: 'app-indicators',
