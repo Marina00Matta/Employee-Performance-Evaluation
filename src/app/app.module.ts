@@ -8,6 +8,8 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { InterceptorService } from './services/interceptor.service';
+import { DataTablesModule } from 'angular-datatables';
+
 
 // import { CriteriasModule } from './criterias/criterias.module' ;
 
@@ -66,6 +68,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     TabsModule.forRoot(),
     ChartsModule,
     HttpClientModule,
+    DataTablesModule,
 
   ],
   declarations: [

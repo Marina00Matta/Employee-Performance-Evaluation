@@ -1,0 +1,92 @@
+  <div class="animated fadeIn">
+
+    <div class="row" >
+    <div class="col-lg">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> evaluation_Cycle
+        </div>
+        <div class="card-body"> 
+          <div>
+            <div class="btn-group btn-group-md ml-2" style="float:right;margin-bottom: 5px;">
+              <button type="button" class="btn btn-block btn-primary" (click)="openModal(AddScreen)">Add</button>
+            </div>
+          </div>
+          <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+            <thead>
+              <tr>
+                <th>Start</th>
+                <th>End</th>
+                <th>Current</th>
+                <th>Cycle Period</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+             <tr *ngFor="let group of evaluationCycleList">
+                   <td>{{group.start}}</td>
+                   <td>{{group.end}}</td>
+                   <td>{{group.is_current}}</td>
+                   <td>{{group.cycle}}</td>
+                   <td style="width:20%;">  
+                    <div class="btn-group btn-group-md ml-2">
+                      <button type="button" class="btn btn-block btn-primary" (click)="openEditModal(group,EditScreen)">Edit</button>
+                    </div>
+                    <div class="btn-group btn-group-md ml-2">
+                      <button type="button" class="btn btn-block btn-primary" (click)="delete(group.id)">Delete</button>
+                    </div>
+                </td>
+               </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <ng-template #AddScreen>
+    <div class="modal-header">
+      <h4 class="modal-title">Add New Evaluation Cycle</h4>
+    </div>
+    <div class="modal-body">
+      <form class="text-left" [formGroup]="newEvaluationCycle" (ngSubmit)="save(newEvaluationCycle.value)">
+        <p class="my-2">Start Date</p>
+        <input class="form-control" id="date-input" type="date" formControlName="start" placeholder="date">
+        <p class="my-2">Cycle</p>
+        <div class="input-group flex-nowrap">
+          <input class="py-2 w-100  ui-inputtext ui-corner-all  " formControlName="cycle" style="width:80%;">
+          <div class="input-group-append">
+            <span class="ui-inputtext ui-corner-all input-group-text" id="addon-wrapping">Months</span>
+          </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="submit" class="btn btn-primary ml-3">Save</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+    </ng-template>
+
+    <ng-template #EditScreen>
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Evaluation Cycle</h4>
+      </div>
+      <div class="modal-body">
+        <form class="text-left" [formGroup]="editEvaluationCycle" (ngSubmit)="edit(editEvaluationCycle.value)">
+          <p class="my-2">Start Date</p>
+          <input class="form-control" id="date-input" type="date" formControlName="start" placeholder="date">
+          <p class="my-2">Cycle</p>
+          <div class="input-group flex-nowrap">
+            <input class="py-2 w-100  ui-inputtext ui-corner-all  " formControlName="cycle" style="width:80%;">
+            <div class="input-group-append">
+              <span class="ui-inputtext ui-corner-all input-group-text" id="addon-wrapping">Months</span>
+            </div>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="submit" class="btn btn-primary ml-3">Save</button>
+            <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+      </ng-template>
+    

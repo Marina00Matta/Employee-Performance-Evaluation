@@ -16,6 +16,8 @@ import { NavbarsComponent } from './navbars/navbars.component';
 import { CriteriasComponent } from './criterias/criterias.component';
 import { IndicatorsComponent } from './indicators/indicators.component';
 import { CriteriaFormsComponent } from './criteria-forms/criteria-forms.component';
+import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.component';
+
 
 const routes: Routes = [
   {
@@ -61,6 +63,13 @@ const routes: Routes = [
         component: IndicatorsComponent,
         data: {
           title: 'indicators'
+        }
+      },
+      {
+        path: 'EvaluationCycle',
+        component: EvaluationCycleComponent,
+        data: {
+          title: 'EvaluationCycle'
         }
       },
       {
