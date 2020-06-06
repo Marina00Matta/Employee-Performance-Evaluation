@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { CriteriasService } from '../../../services/criterias.service';
+
 
 @Component({
   selector: 'app-criteria-forms',
@@ -11,6 +13,10 @@ export class CriteriaFormsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addCriteria(form: NgForm){
+    console.log(form.value);
   }
 
 }
