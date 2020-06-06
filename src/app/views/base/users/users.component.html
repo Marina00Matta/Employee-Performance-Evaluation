@@ -5,27 +5,27 @@
     <div class="col-lg">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Criterias
+          <i class="fa fa-align-justify"></i> Users
         </div>
         <div class="card-body">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>Criteria Name</th>
-                <th>Type</th>
+                <th>Employee Name</th>
+                <th>Email</th>
+                <!-- <th>Hire Date</th> -->
+                <!-- <th>Supervisor</th> -->
+                <!-- <th>Image</th> -->
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let criteria of criterias" >
-                <td>{{criteria.name}}</td>
-                <td>
-                  <div *ngFor="let type of types">
-                    <div *ngIf= "type.id == criteria.type_id">
-                      {{type.type}}
-                    </div>
-                  </div>
-                </td>
+              <tr *ngFor="let user of users">
+                <ng-template [ngIf]="user.name!=='Superadmin'">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <!-- <td>{{user.hiring-date}}</td> -->
+                <!-- <td>{{user.supervisor}}</td> -->
              
                 <td>  
                   <div class="btn-group btn-group-md ml-2">
@@ -35,9 +35,10 @@
                   <button type="button" class="btn btn-block btn-warning">Edit</button>
                 </div>
                 <div class="btn-group btn-group-md ml-2">
-                    <button type="button" class="btn btn-block btn-danger" (click) = deleteFunction(criteria.id)>Delete</button>
+                    <button type="button" class="btn btn-block btn-danger" (click) = deleteUser(user.id)>Delete</button>
                   </div>
               </td>
+            </ng-template>
               </tr>
             </tbody>
           </table>

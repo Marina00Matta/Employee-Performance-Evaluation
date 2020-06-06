@@ -13,9 +13,7 @@ export class CriteriaFormsComponent implements OnInit {
   constructor(private _criteriasService: CriteriasService,) { }
 
   ngOnInit(): void {
-    this._criteriasService.getCriteriaTypes().subscribe(dataType =>{
-      console.log(dataType);
-      
+    this._criteriasService.getCriteriaTypes().subscribe(dataType =>{      
       this.types = dataType;
     })
 

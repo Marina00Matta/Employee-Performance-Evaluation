@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-9">
     <div class="card">
       <div class="card-header">
         <strong>Horizontal</strong> Form
@@ -9,7 +9,6 @@
             <label class="col-md-3 col-form-label" for="Criteria">Criteria Name</label>
             <div class="col-md-9">
               <input type="text" ngModel id="Criteria" name="name" class="form-control" placeholder="Criteria Name" required>
-              <!-- <span class="help-block">Please enter your email</span> -->
             </div>
           </div>
           <div class="form-group row">
@@ -17,8 +16,6 @@
             <div class="col-md-9">
               <select id="criteriatype" ngModel name="type_id" class="form-control">
                 <option *ngFor="let type of types" value={{type.id}}>{{type.type}}</option>
-                <!-- <option value="2">Average</option>
-                <option value="3">Mathematical</option> -->
               </select>
             </div>
         </div>

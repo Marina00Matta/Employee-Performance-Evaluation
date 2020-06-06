@@ -49,11 +49,14 @@ import { NavbarsComponent } from './navbars/navbars.component';
 import { BaseRoutingModule } from './base-routing.module';
 
 import { CriteriasComponent } from './criterias/criterias.component';
-// import { CriteriasModule } from './criterias/criterias.module'; 
 import { CriteriasService } from '../../services/criterias.service';
 import { CriteriaFormsComponent } from './criteria-forms/criteria-forms.component';
 import { IndicatorsComponent } from './indicators/indicators.component';
 import { IndicatorsService } from '../../services/indicators.service';
+import { RolesComponent } from './roles/roles.component';
+import { RoleFormComponent } from './role-form/role-form.component';
+import { UsersComponent } from './users/users.component';
+import { UsersFormComponent } from './users-form/users-form.component';
 
 
 @NgModule({
@@ -86,6 +89,10 @@ import { IndicatorsService } from '../../services/indicators.service';
     CriteriasComponent,
     IndicatorsComponent,
     CriteriaFormsComponent,
+    RolesComponent,
+    RoleFormComponent,
+    UsersComponent,
+    UsersFormComponent,
   ],
   providers: [
     CriteriasService,

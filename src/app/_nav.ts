@@ -35,8 +35,28 @@ export const navItems: INavData[] = [
         icon: 'icon-puzzle'
       },
       {
+        name: 'Positions',
+        url: '/base/positions',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'positionsForm',
+        url: '/base/position-forms',
+        icon: 'icon-puzzle'
+      },
+      {
         name: 'Indicators',
         url: '/base/indicator',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Users',
+        url: '/base/Users',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'UserForm',
+        url: '/base/user-form',
         icon: 'icon-puzzle'
       },
       {

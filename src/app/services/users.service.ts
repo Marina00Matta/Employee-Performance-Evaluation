@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsersService {
+  private _apiUrl='http://localhost:8000/api/user';
+
+  constructor(private _http: HttpClient) { }
+
+  getUsers(){
+    return this._http.get(`${this._apiUrl}s`)
+  }
+
+  getUserById(id){
+    return this._http.get(`${this._apiUrl}/${id}`)
+  }
+  deleteUser(id){
+    return this._http.delete(`${this._apiUrl}/${id}`)
+  }
+
+  addUser(user){
+    return this._http.post(this._apiUrl,user)
+  }
+}

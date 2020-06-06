@@ -16,6 +16,11 @@ import { NavbarsComponent } from './navbars/navbars.component';
 import { CriteriasComponent } from './criterias/criterias.component';
 import { IndicatorsComponent } from './indicators/indicators.component';
 import { CriteriaFormsComponent } from './criteria-forms/criteria-forms.component';
+import { RoleFormComponent } from './role-form/role-form.component';
+import { RolesComponent } from './roles/roles.component';
+import { UsersComponent } from './users/users.component';
+import { UsersFormComponent } from './users-form/users-form.component';
+
 
 const routes: Routes = [
   {
@@ -50,6 +55,27 @@ const routes: Routes = [
         }
       },
       {
+        path: 'indicator',
+        component: IndicatorsComponent,
+        data: {
+          title: 'indicators'
+        }
+      },
+      {
+        path: 'positions',
+        component: RolesComponent,
+        data: {
+          title: 'Position'
+        }
+      },
+      {
+        path: 'Users',
+        component: UsersComponent,
+        data: {
+          title: 'Users'
+        }
+      },
+      {
         path: 'criteria-forms',
         component: CriteriaFormsComponent,
         data: {
@@ -57,10 +83,17 @@ const routes: Routes = [
         }
       },
       {
-        path: 'indicator',
-        component: IndicatorsComponent,
+        path: 'user-form',
+        component: UsersFormComponent,
         data: {
-          title: 'indicators'
+          title: 'user-form'
+        }
+      },
+      {
+        path: 'position-forms',
+        component: RoleFormComponent,
+        data: {
+          title: 'position-forms'
         }
       },
       {
