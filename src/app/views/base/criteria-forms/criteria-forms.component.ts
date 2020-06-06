@@ -9,13 +9,19 @@ import { CriteriasService } from '../../../services/criterias.service';
   styleUrls: ['./criteria-forms.component.css']
 })
 export class CriteriaFormsComponent implements OnInit {
-
-  constructor() { }
+  types;
+  constructor(private _criteriasService: CriteriasService,) { }
 
   ngOnInit(): void {
+    this._criteriasService.getCriteriaTypes().subscribe(dataType =>{
+      console.log(dataType);
+      
+      this.types = dataType;
+    })
+
   }
 
-  addCriteria(form: NgForm){
+  onSubmit(form: NgForm){
     console.log(form.value);
   }
 

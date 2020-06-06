@@ -4,28 +4,26 @@
         <strong>Horizontal</strong> Form
       </div>
       <div class="card-body">
-        <form #newCriteriaForm = "ngForm"  (ngsubmit)="addCriteria(newCriteriaForm)" class="form-horizontal">
+        <form #newCriteriaForm = "ngForm"  (ngSubmit)="onSubmit(newCriteriaForm)" class="form-horizontal">
           <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="hf-email">Criteria Name</label>
+            <label class="col-md-3 col-form-label" for="Criteria">Criteria Name</label>
             <div class="col-md-9">
-              <input type="text" ngModel id="Criteria" name="Criteria name" class="form-control" placeholder="Criteria Name" required>
+              <input type="text" ngModel id="Criteria" name="name" class="form-control" placeholder="Criteria Name" required>
               <!-- <span class="help-block">Please enter your email</span> -->
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="select1">Type</label>
+            <label class="col-md-3 col-form-label" for="criteriatype">Type</label>
             <div class="col-md-9">
-              <select id="criteriatype" ngModel name="criteria type" class="form-control">
-                <option value="0">Please select</option>
-                <option value="1">Direct</option>
-                <option value="2">Average</option>
-                <option value="3">Mathematical</option>
+              <select id="criteriatype" ngModel name="type_id" class="form-control">
+                <option *ngFor="let type of types" value={{type.id}}>{{type.type}}</option>
+                <!-- <option value="2">Average</option>
+                <option value="3">Mathematical</option> -->
               </select>
             </div>
         </div>
+          <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
         </form>
-      </div>
-      <div class="card-footer">
-        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+
       </div>
     </div>
