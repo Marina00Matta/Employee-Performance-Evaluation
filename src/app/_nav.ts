@@ -35,6 +35,11 @@ export const navItems: INavData[] = [
         icon: 'icon-puzzle'
       },
       {
+        name: 'Evaluation Cycle',
+        url: '/base/EvaluationCycle',
+        icon: 'icon-puzzle'
+      },
+      {
         name: 'Indicators',
         url: '/base/indicator',
         icon: 'icon-puzzle'
