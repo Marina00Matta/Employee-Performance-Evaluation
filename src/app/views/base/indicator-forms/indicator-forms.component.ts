@@ -28,16 +28,16 @@ export class IndicatorFormsComponent implements OnInit {
   onSubmit(form: NgForm){
     console.log(form);
 
-    // if(form.valid){
-    // console.log(form.value);
-    // this._indicatorsService.addIndicator(form.value).subscribe((res: any)=>{
-    //   console.log(res);
-    //   // if(res.status){
-    //   //  this._router.navigate(['/#/base/indicator']);
-    //   // }
-    // });
-    // form.reset();
-    // }
+    if(form.valid){
+    console.log(form.value);
+    this._indicatorsService.addIndicator(form.value).subscribe((res: any)=>{
+      console.log(res);
+      // if(res.status){
+      //  this._router.navigate(['/#/base/indicator']);
+      // }
+    });
+    form.reset();
+    }
   }
 
 }

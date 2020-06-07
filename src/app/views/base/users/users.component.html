@@ -5,22 +5,28 @@
     <div class="col-lg">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Indicators
+          <i class="fa fa-align-justify"></i> Users
         </div>
         <div class="card-body">
-          <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>Indicator Name</th>
-                <!-- <th>Criteria Type</th> -->
+                <th>Employee Name</th>
+                <th>Email</th>
+                <!-- <th>Hire Date</th> -->
+                <!-- <th>Supervisor</th> -->
+                <!-- <th>Image</th> -->
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let indicator of indicators" >
-                <td>{{indicator.name}}</td>
-                <!-- <td *ngIf=>{{criteria.type_id}}</td> -->
+              <tr *ngFor="let user of users" [ngIf]="user.name!=='Superadmin'">{{user.name}}>
+                <!-- <ng-template [ngIf]="user.name!=='Superadmin'"> -->
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <!-- <td>{{user.hiring-date}}</td> -->
+                <!-- <td>{{user.supervisor}}</td> -->
+             
                 <td>  
                   <div class="btn-group btn-group-md ml-2">
                   <button type="button" class="btn btn-block btn-primary btn-md">Show</button>
@@ -29,9 +35,10 @@
                   <button type="button" class="btn btn-block btn-warning">Edit</button>
                 </div>
                 <div class="btn-group btn-group-md ml-2">
-                    <button type="button" class="btn btn-block btn-danger" (click) = deleteIndicator(indicator.id)>Delete</button>
+                    <button type="button" class="btn btn-block btn-danger" (click) = deleteUser(user.id)>Delete</button>
                   </div>
               </td>
+            <!-- </ng-template> -->
               </tr>
             </tbody>
           </table>

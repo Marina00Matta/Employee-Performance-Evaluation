@@ -1,0 +1,18 @@
+<div class="col-md-9">
+    <div class="card">
+      <div class="card-header">
+        <strong>Position</strong> Form
+      </div>
+      <div class="card-body">
+        <form #newPositionForm = "ngForm"  (ngSubmit)="addPosition(newPositionForm)" class="form-horizontal">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="Position">Position Name</label>
+            <div class="col-md-9">
+              <input type="text" ngModel id="Position" name="name" class="form-control" placeholder="Enter the position here ...." required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-md btn-info"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        </form>
+
+      </div>
+    </div>
