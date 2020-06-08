@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IndicatorsService } from '../../../services/indicators.service';
+import { CriteriasService } from '../../../services/criterias.service';
 
 @Component({
   selector: 'app-indicators',
@@ -8,12 +9,18 @@ import { IndicatorsService } from '../../../services/indicators.service';
 })
 export class IndicatorsComponent implements OnInit {
   indicators;
-  constructor(private _indicatorService: IndicatorsService) { }
+  criterias;
+  constructor(private _indicatorService: IndicatorsService,
+    private _criteriaService: CriteriasService) { }
 
   ngOnInit(): void {
     this.getIndicatorList();
+    this._criteriaService.getCriteria().subscribe(datatype=>{
+      this.criterias=datatype;
+      console.log(datatype);
+    })
   }
-
+  
   deleteIndicator(id){
     this._indicatorService.deleteIndicator(id).subscribe(() =>{})
     console.log(id)
