@@ -13,24 +13,24 @@
               <tr>
                 <th>Employee Name</th>
                 <th>Email</th>
-                <!-- <th>Hire Date</th> -->
+                <th>Hire Date</th>
                 <!-- <th>Supervisor</th> -->
                 <!-- <th>Image</th> -->
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of users" [ngIf]="user.name!=='Superadmin'">{{user.name}}>
-                <!-- <ng-template [ngIf]="user.name!=='Superadmin'"> -->
+              <tr *ngFor="let user of users">
+                <ng-template [ngIf]="user.name!=='Superadmin'">
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <!-- <td>{{user.hiring-date}}</td> -->
+                <td>{{user.hiring_at}}</td>
                 <!-- <td>{{user.supervisor}}</td> -->
              
                 <td>  
-                  <div class="btn-group btn-group-md ml-2">
+                  <!-- <div class="btn-group btn-group-md ml-2">
                   <button type="button" class="btn btn-block btn-primary btn-md">Show</button>
-                </div>
+                </div> -->
                <div class="btn-group btn-group-md ml-2">
                   <button type="button" class="btn btn-block btn-warning">Edit</button>
                 </div>
@@ -38,7 +38,7 @@
                     <button type="button" class="btn btn-block btn-danger" (click) = deleteUser(user.id)>Delete</button>
                   </div>
               </td>
-            <!-- </ng-template> -->
+               </ng-template>
               </tr>
             </tbody>
           </table>

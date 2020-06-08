@@ -21,6 +21,6 @@ export class UsersService {
   }
 
   addUser(user){
-    return this._http.post(this._apiUrl,user)
+    return this._http.post<any>(this._apiUrl,user)
   }
 }

@@ -26,5 +26,6 @@ export class CriteriasComponent implements OnInit {
     this._criteriasService.deleteCriteria(id).subscribe(()=>console.log('deleted'));
           console.log(id);
   }
+  
 
 }
