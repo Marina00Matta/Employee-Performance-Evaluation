@@ -24,7 +24,7 @@ export class UsersFormComponent implements OnInit {
       console.log(roleData);
       this.roles=roleData;
     });
-    
+
     this._userservice.getUsers().subscribe((res:any) =>{
       this.users=res.data;
     });
@@ -37,12 +37,12 @@ export class UsersFormComponent implements OnInit {
         myFormData.append('avatar',this.filedata,this.filedata.name)
         
         Object.entries(form.value).map(value =>{
+          
           myFormData.append(`${value[0]}`,`${value[1]}`);
         })
       this._userservice.addUser(myFormData).subscribe((res: any) => {
         console.log(res);
       })
-      console.log(myFormData);
     }
     form.reset;
   }

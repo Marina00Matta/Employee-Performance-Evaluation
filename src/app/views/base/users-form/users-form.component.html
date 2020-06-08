@@ -32,7 +32,7 @@
          <div class="form-group row">
           <label class="col-md-3 col-form-label" for="Position">Position</label>
             <div class="col-md-9">  
-              <select id="Position" ngModel name="role" class="form-control"  #roleRef="ngModel" required>
+              <select id="Position" ngModel name="role_id" class="form-control"  #roleRef="ngModel" required>
                 <option *ngFor="let position of roles" value={{position.id}}>{{position.name}}</option>
               </select>
             <div *ngIf="roleRef.touched && roleRef.invalid" class="alert alert-danger" >
