@@ -26,7 +26,7 @@
                   <button type="button" class="btn btn-block btn-primary btn-md">Show</button>
                 </div>
                <div class="btn-group btn-group-md ml-2">
-                  <button type="button" class="btn btn-block btn-warning">Edit</button>
+                  <button type="button" class="btn btn-block btn-warning" (click)="openEditModal(indicator,EditScreen)">Edit</button>
                 </div>
                 <div class="btn-group btn-group-md ml-2">
                     <button type="button" class="btn btn-block btn-danger" (click) = deleteIndicator(indicator.id)>Delete</button>
@@ -39,3 +39,29 @@
       </div>
     </div>
     </div>
+
+    <ng-template #EditScreen>
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Indicator</h4>
+      </div>
+      <div class="modal-body">
+        <form class="text-left" [formGroup]="editIndicator" (ngSubmit)="edit(editIndicator.value)">
+          <p class="my-2">Indicator Name</p>
+          <input class="py-2 w-100 ui-inputtext ui-corner-all" formControlName="name">
+          <p class="my-2">Type</p>
+          <select formControlName="criteria_id" class="form-control">
+            <option *ngFor="let criteria of criterias" value={{criteria.id}}>{{criteria.name}}</option>
+          </select>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="is_positive">
+            <label class="form-check-label">
+              Is positive
+            </label>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="submit" class="btn btn-primary ml-3">Save</button>
+            <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+      </ng-template>
