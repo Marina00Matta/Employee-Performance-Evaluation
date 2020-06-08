@@ -30,5 +30,6 @@ export class CriteriasComponent implements OnInit {
       this.criterias = data;
     })
   }
+  
 
 }

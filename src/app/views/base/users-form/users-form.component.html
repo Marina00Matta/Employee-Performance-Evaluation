@@ -8,39 +8,64 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="user">Employee Name</label>
             <div class="col-md-9">
-              <input type="text" ngModel id="user" name="name" class="form-control" placeholder="Enter employee name here....." required>
+              <input type="text" ngModel id="user" name="name" class="form-control"  #nameRef="ngModel" placeholder="Enter employee name here....." required>
+              <div *ngIf="nameRef.touched && nameRef.invalid" class="alert alert-danger" >
+                Position is required </div>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="Pass">Password</label>
             <div class="col-md-9">
-                <input type="password" ngModel id="pass" name="password" class="form-control" placeholder="Enter password here....." required>
-            </div>
+                <input type="password" ngModel id="pass" name="password" class="form-control"  #passwordRef="ngModel" placeholder="Enter password here....." required>
+                <div *ngIf="passwordRef.touched && passwordRef.invalid" class="alert alert-danger" >
+                  Position is required </div>
+              </div>
          </div>
          <div class="form-group row">
             <label class="col-md-3 col-form-label" for="email">Email</label>
             <div class="col-md-9">
-                <input type="email" ngModel id="email" name="email" class="form-control" placeholder="Enter email here....." required>
-            </div>
+                <input type="email" ngModel id="email" name="email" class="form-control"  #emailRef="ngModel" placeholder="Enter email here....." required>
+                <div *ngIf="emailRef.touched && emailRef.invalid" class="alert alert-danger" >
+                  Position is required </div>
+              </div>
          </div>
          <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="hiring-date">Hiring Date</label>
+          <label class="col-md-3 col-form-label" for="Position">Position</label>
+            <div class="col-md-9">  
+              <select id="Position" ngModel name="role" class="form-control"  #roleRef="ngModel" required>
+                <option *ngFor="let position of roles" value={{position.id}}>{{position.name}}</option>
+              </select>
+            <div *ngIf="roleRef.touched && roleRef.invalid" class="alert alert-danger" >
+              Position is required
+            </div>
+          </div>
+      </div>
+         <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="hiring_at">Hiring Date</label>
           <div class="col-md-9">
-            <input class="form-control" id="hiring-date" ngModel type="date" name="hiring-date" placeholder="Enter hiring date....." required>
+            <input class="form-control" id="hiring-date" ngModel type="date" name="hiring_at"  #hiringAtRef="ngModel" placeholder="Enter hiring date....." required>
+            <div *ngIf="hiringAtRef.touched && hiringAtRef.invalid" class="alert alert-danger" >
+              Position is required </div>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="supervisor">Supervisor</label>
           <div class="col-md-9">
             <select id="supervisor" ngModel name="supervisor" class="form-control">
-              <option *ngFor="let user of users" value={{user.id}} [ngIf]="user.name!=='Superadmin'">{{user.name}}</option>
+      
+              <option *ngFor="let user of users" value={{user.id}} >
+                <ng-template [ngIf]="user.name!=='Superadmin'">
+                  {{user.name}}
+                </ng-template>
+
+                </option>
             </select>
           </div>
       </div>
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="file-input">Avatar input</label>
           <div class="col-md-9">
-            <input type="file" id="file-input"  ngModel name="avatar">
+            <input type="file" id="file-input" #fileupload ngModel name="avatar" (change)="fileEvent($event)"/>
           </div>
         </div>
           <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
