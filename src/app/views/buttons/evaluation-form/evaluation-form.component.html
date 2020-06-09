@@ -1,0 +1,27 @@
+<div class="col-md-9">
+    <div class="card">
+      <div class="card-header">
+        <strong>Evaluation</strong> Form
+      </div>
+      <div class="card-body">
+        <form #EvaluationForm = "ngForm"  (ngSubmit)="onSubmit(EvaluationForm)" class="form-horizontal">
+          <div class="form-group row" *ngFor="let eva of criterias">
+            <label class="col-md-3 col-form-label" for="Criteria">{{eva.name}}</label>
+            <div class="col-md-9"> 
+              <select id="criteriaType" ngModel name={{eva.name}} class="form-control" #typeIdRef="ngModel" required>
+                <option value=1>Bad</option>
+                <option value=2>Good</option>
+                <option value=3>Very Good</option>
+                <option value=4>Excellent</option>
+                <option value=5>Professional</option>
+              </select>
+              <div *ngIf="typeIdRef.touched && typeIdRef.invalid" class="alert alert-danger" >
+                Must  Evaluate
+              </div>
+            </div>
+        </div>
+          <button type="submit" class="btn btn-md btn-primary" [disabled]="EvaluationForm.invalid"><i class="fa fa-dot-circle-o"></i> Submit</button>
+        </form>
+
+      </div>
+    </div>

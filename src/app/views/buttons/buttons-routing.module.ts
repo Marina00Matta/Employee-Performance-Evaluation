@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ButtonsComponent } from './buttons.component';
 import { DropdownsComponent } from './dropdowns.component';
 import { BrandButtonsComponent } from './brand-buttons.component';
+import { EvaluationComponent } from './evaluation/evaluation.component';
+import { EvaluationFormComponent } from './evaluation-form/evaluation-form.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,20 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'buttons'
+      },
+      {
+        path: 'evaluation',
+        component: EvaluationComponent,
+        data: {
+          title: 'evaluate'
+        }
+      },
+      {
+        path: 'evaluate-form/:id',
+        component: EvaluationFormComponent,
+        data: {
+          title: 'evaluate'
+        }
       },
       {
         path: 'buttons',
