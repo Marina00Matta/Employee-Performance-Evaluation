@@ -23,15 +23,10 @@ export class CriteriasComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCriteriaList();
-    this.getCriteriaTypeList();
+
   }
 
-  getCriteriaList(){
-    this._criteriasService.getCriteria().subscribe(data =>{
-      console.log(data)
-      this.criterias = data;
-    })
-  }
+ 
 
   getCriteriaTypeList(){
     this._criteriasService.getCriteriaTypes().subscribe(dataType =>{
@@ -43,6 +38,13 @@ export class CriteriasComponent implements OnInit {
   deleteFunction(id){
     this._criteriasService.deleteCriteria(id).subscribe(()=>console.log('deleted'));
           console.log(id);
+    this.getCriteriaList();
+  }
+  getCriteriaList(){
+    this._criteriasService.getCriteria().subscribe(data =>{
+      console.log(data)
+      this.criterias = data;
+    })
   }
 
   initEditForm(){

@@ -15,18 +15,34 @@
             <thead>
               <tr>
                 <th>Indicator Name</th>
-                <!-- <th>Criteria Type</th> -->
+                <th>Criteria </th>
+                <th>Type </th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let indicator of indicators" >
                 <td>{{indicator.name}}</td>
+                <td>
+                  <div *ngFor="let criteria of criterias">
+                    <div *ngIf= "criteria.id == indicator.criteria_id">
+                      {{criteria.name}}
+                    </div>
+                  </div>
+                </td>
+                <td>
+                    <div *ngIf= "indicator.is_positive == 1">
+                      Positive
+                    </div>
+                    <div *ngIf= "indicator.is_positive != 1">
+                      Negative
+                    </div>
+                </td>
                 <!-- <td *ngIf=>{{criteria.type_id}}</td> -->
                 <td>  
-                  <div class="btn-group btn-group-md ml-2">
+                  <!-- <div class="btn-group btn-group-md ml-2">
                   <button type="button" class="btn btn-block btn-primary btn-md">Show</button>
-                </div>
+                </div> -->
                <div class="btn-group btn-group-md ml-2">
                   <button type="button" class="btn btn-block btn-warning" (click)="openEditModal(indicator,EditScreen)">Edit</button>
                 </div>

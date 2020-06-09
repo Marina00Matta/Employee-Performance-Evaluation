@@ -19,6 +19,16 @@ import { DatePipe } from '@angular/common';
 })
 export class IndicatorsComponent implements OnInit {
   indicators;
+  // criterias;
+  // constructor(private _indicatorService: IndicatorsService,
+  //   private _criteriaService: CriteriasService) { }
+
+  // ngOnInit(): void {
+  //   this.getIndicatorList();
+  //   this._criteriaService.getCriteria().subscribe(datatype=>{
+  //     this.criterias=datatype;
+  //     console.log(datatype);
+  //   })
   editableObj : Indicator;
   editIndicator : FormGroup;
   criterias;
@@ -29,7 +39,7 @@ export class IndicatorsComponent implements OnInit {
     this.getIndicatorList();
     this.getCriteriaList();
   }
-
+  
   deleteIndicator(id){
     this._indicatorService.deleteIndicator(id).subscribe(() =>{})
     console.log(id)
