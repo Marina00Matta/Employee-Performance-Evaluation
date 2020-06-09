@@ -11,28 +11,33 @@
           <table class="table table-bordered">
             <thead>
               <tr>
+                 <th>Image</th>
                 <th>Employee Name</th>
                 <th>Email</th>
                 <th>Hire Date</th>
-                <!-- <th>Supervisor</th> -->
-                <!-- <th>Image</th> -->
+                <th>Supervisor</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
                 <ng-template [ngIf]="user.name!=='Superadmin'">
+                <td><img  class="mg-circle elevation-2 ml-3" style="width:80px; height:80px" src="{{user.avatar}}" alt="No User Avatar"/></td>
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.hiring_at}}</td>
-                <!-- <td>{{user.supervisor}}</td> -->
+                <td>{{user.hiring_at | date:'MM/dd/yyyy'}}</td>
+                <td>
+                    <div *ngFor="let sup of users">
+                      <div *ngIf= "sup.id == user.supervisor">
+                        {{sup.name}}
+                      </div>
+                    </div>
+                </td>
              
                 <td>  
-                  <!-- <div class="btn-group btn-group-md ml-2">
-                  <button type="button" class="btn btn-block btn-primary btn-md">Show</button>
-                </div> -->
+ 
                <div class="btn-group btn-group-md ml-2">
-                  <button type="button" class="btn btn-block btn-warning">Edit</button>
+                  <button type="button" class="btn btn-block btn-warning" [routerLink]="['/base/edit_user',user.id]">Edit</button>
                 </div>
                 <div class="btn-group btn-group-md ml-2">
                     <button type="button" class="btn btn-block btn-danger" (click) = deleteUser(user.id)>Delete</button>
