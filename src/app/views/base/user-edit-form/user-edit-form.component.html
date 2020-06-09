@@ -38,7 +38,7 @@
           <div class="col-md-9">
             <input class="form-control" id="hiring-date" ngModel type="date" name="hiring_at" [(ngModel)]=user.hiring_at #hiringAtRef="ngModel" placeholder="Enter hiring date....." required>
             <div *ngIf="hiringAtRef.touched && hiringAtRef.invalid" class="alert alert-danger" >
-              Position is required </div>
+              Hiring Date is required </div>
           </div>
         </div>
         <div class="form-group row">

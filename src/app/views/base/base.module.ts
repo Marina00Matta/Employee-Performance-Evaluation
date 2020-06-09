@@ -62,7 +62,6 @@ import { IndicatorsService } from '../../services/indicators.service';
 
 import { IndicatorFormsComponent } from './indicator-forms/indicator-forms.component';
 
-import { RolesComponent } from './roles/roles.component';
 import { RoleFormComponent } from './role-form/role-form.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users-form/users-form.component';
@@ -108,7 +107,6 @@ import { UserEditFormComponent } from './user-edit-form/user-edit-form.component
 
     IndicatorFormsComponent,
 
-    RolesComponent,
     RoleFormComponent,
     UsersComponent,
     UsersFormComponent,

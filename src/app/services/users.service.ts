@@ -16,11 +16,16 @@ export class UsersService {
   getUserById(id){
     return this._http.get(`${this._apiUrl}/${id}`)
   }
+  
   deleteUser(id){
     return this._http.delete(`${this._apiUrl}/${id}`)
   }
 
   addUser(user){
     return this._http.post<any>(this._apiUrl,user)
+  }
+
+  editUser(id,user){
+    return this._http.put(`${this._apiUrl}/${id}`,user)
   }
 }

@@ -25,18 +25,13 @@ export const navItems: INavData[] = [
         icon: 'icon-puzzle'
       },
       {
+        name: 'Users',
+        url: '/base/Users',
+        icon: 'icon-puzzle'
+      },
+      {
         name: 'Criterias',
         url: '/base/criteria',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'CriteriasForm',
-        url: '/base/criteria-forms',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Evaluation Cycle',
-        url: '/base/EvaluationCycle',
         icon: 'icon-puzzle'
       },
       {
@@ -45,29 +40,8 @@ export const navItems: INavData[] = [
         icon: 'icon-puzzle'
       },
       {
-
-        name: 'IndicatorForms',
-        url: '/base/indicator-forms',
-        icon: 'icon-puzzle',
-      },
-      {
-        name: 'Users',
-        url: '/base/Users',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'UserForm',
-        url: '/base/user-form',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Positions',
-        url: '/base/positions',
-        icon: 'icon-puzzle'
-      },
-      {
-        name: 'Position-Form',
-        url: '/base/position-forms',
+        name: 'Evaluation Cycle',
+        url: '/base/EvaluationCycle',
         icon: 'icon-puzzle'
       },
       {

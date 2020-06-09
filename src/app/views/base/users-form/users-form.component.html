@@ -51,7 +51,7 @@
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="supervisor">Supervisor</label>
           <div class="col-md-9">
-            <select id="supervisor" ngModel name="supervisor" class="form-control">
+            <select id="supervisor" ngModel name="supervisor" class="form-control" >
       
               <option *ngFor="let user of users" value={{user.id}} >
                 <ng-template [ngIf]="user.name!=='Superadmin'">
@@ -65,10 +65,10 @@
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="file-input">Avatar input</label>
           <div class="col-md-9">
-            <input type="file" id="file-input" #fileupload ngModel name="avatar" (change)="fileEvent($event)"/>
+            <input type="file" id="file-input" #fileupload ngModel name="avatar" (change)="fileEvent($event)" required/>
           </div>
         </div>
-          <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="submit" class="btn btn-md btn-primary" [disabled]="newUserForm.invalid"><i class="fa fa-dot-circle-o"></i> Submit</button>
         </form>
 
       </div>

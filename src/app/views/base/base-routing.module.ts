@@ -20,7 +20,6 @@ import { CriteriaFormsComponent } from './criteria-forms/criteria-forms.componen
 import { IndicatorFormsComponent } from './indicator-forms/indicator-forms.component';
 
 import { RoleFormComponent } from './role-form/role-form.component';
-import { RolesComponent } from './roles/roles.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users-form/users-form.component';
 import { UserEditFormComponent } from './user-edit-form/user-edit-form.component';
@@ -64,13 +63,6 @@ const routes: Routes = [
         component: IndicatorsComponent,
         data: {
           title: 'indicators'
-        }
-      },
-      {
-        path: 'positions',
-        component: RolesComponent,
-        data: {
-          title: 'Position'
         }
       },
       {
