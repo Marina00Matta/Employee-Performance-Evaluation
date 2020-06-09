@@ -24,6 +24,11 @@ export class IndicatorsService {
     return this._http.post(this._apiUrl,indicator)
   }
 
+  editCriteria(value,id){
+    console.log("value",value)
+    console.log("id",id)
+    return this._http.put('http://localhost:8000/api/indicator/'+id,value);
+  }
   // addIndicator(id,indicator){
   //   return this._http.post(this._apiUrl,indicator)
   // }
