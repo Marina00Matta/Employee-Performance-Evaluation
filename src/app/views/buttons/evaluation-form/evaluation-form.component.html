@@ -8,7 +8,7 @@
           <div class="form-group row" *ngFor="let eva of criterias">
             <label class="col-md-3 col-form-label" for="Criteria">{{eva.name}}</label>
             <div class="col-md-9"> 
-              <select id="criteriaType" ngModel name={{eva.name}} class="form-control" #typeIdRef="ngModel" required>
+              <select id="criteriaType" ngModel name={{eva.id}} class="form-control" #typeIdRef="ngModel" required>
                 <option value=1>Bad</option>
                 <option value=2>Good</option>
                 <option value=3>Very Good</option>
