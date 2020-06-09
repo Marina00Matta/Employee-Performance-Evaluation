@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { UsersService } from '../../../services/users.service';
 import { NgForm } from '@angular/forms';
 import { RolesService } from '../../../services/roles.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-form',
@@ -13,18 +13,18 @@ import { RolesService } from '../../../services/roles.service';
 export class UsersFormComponent implements OnInit {
   users;
   roles;
+  is_added= false;
   filedata:any;
     fileEvent(e){      
     this.filedata = e.target.files[0];
     }
-  constructor(private _userservice:UsersService,private _rolesService: RolesService) { }
+  constructor(private _userservice:UsersService,private _rolesService: RolesService,private route:Router) { }
 
   ngOnInit(): void {
     this._rolesService.getRoles().subscribe(roleData =>{
-      console.log(roleData);
       this.roles=roleData;
     });
-    
+
     this._userservice.getUsers().subscribe((res:any) =>{
       this.users=res.data;
     });
@@ -41,9 +41,10 @@ export class UsersFormComponent implements OnInit {
         })
       this._userservice.addUser(myFormData).subscribe((res: any) => {
         console.log(res);
+        this.is_added=true;
+        form.reset;
+        this.route.navigate(['/base/Users']);
       })
-      console.log(myFormData);
     }
-    form.reset;
   }
 }

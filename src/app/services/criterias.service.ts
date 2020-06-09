@@ -23,4 +23,10 @@ export class CriteriasService {
   addCriteria(criteria){
     return this._http.post(this._apiUrl,criteria)
   }
+
+  editCriteria(value,id){
+    console.log("value",value)
+    console.log("id",id)
+    return this._http.put('http://localhost:8000/api/criteria/'+id,value);
+  }
 }

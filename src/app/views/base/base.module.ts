@@ -69,6 +69,7 @@ import { UsersFormComponent } from './users-form/users-form.component';
 
 import { EvaluationCycleService } from './EvaluationCycle/EvaluationCycle.service';
 import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.component';
+import { UserEditFormComponent } from './user-edit-form/user-edit-form.component';
 
 
 @NgModule({
@@ -113,6 +114,8 @@ import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.comp
     UsersFormComponent,
 
     EvaluationCycleComponent,
+
+    UserEditFormComponent,
   ],
   providers: [
     CriteriasService,

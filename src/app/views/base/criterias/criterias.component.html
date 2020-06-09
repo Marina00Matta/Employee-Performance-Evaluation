@@ -33,7 +33,7 @@
                   <button type="button" class="btn btn-block btn-primary btn-md">Show</button>
                 </div> -->
                <div class="btn-group btn-group-md ml-2">
-                  <button type="button" class="btn btn-block btn-warning">Edit</button>
+                  <button type="button" class="btn btn-block btn-warning" (click)="openEditModal(criteria,EditScreen)">Edit</button>
                 </div>
                 <div class="btn-group btn-group-md ml-2">
                     <button type="button" class="btn btn-block btn-danger" (click) = deleteFunction(criteria.id)>Delete</button>
@@ -46,3 +46,25 @@
       </div>
     </div>
     </div>
+
+
+    
+   <ng-template #EditScreen>
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Criteria</h4>
+    </div>
+    <div class="modal-body">
+      <form class="text-left" [formGroup]="editCriteria" (ngSubmit)="edit(editCriteria.value)">
+        <p class="my-2">Criteria Name</p>
+        <input class="py-2 w-100 ui-inputtext ui-corner-all" formControlName="name">
+        <p class="my-2">Type</p>
+        <select formControlName="type_id" class="form-control">
+          <option *ngFor="let type of types" value={{type.id}}>{{type.type}}</option>
+        </select>
+        <div class="modal-footer border-0">
+          <button type="submit" class="btn btn-primary ml-3">Save</button>
+          <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+    </ng-template>

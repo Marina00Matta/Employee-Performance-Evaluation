@@ -23,7 +23,7 @@ import { RoleFormComponent } from './role-form/role-form.component';
 import { RolesComponent } from './roles/roles.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users-form/users-form.component';
-
+import { UserEditFormComponent } from './user-edit-form/user-edit-form.component';
 import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.component';
 
 
@@ -71,6 +71,13 @@ const routes: Routes = [
         component: RolesComponent,
         data: {
           title: 'Position'
+        }
+      },
+      {
+        path: 'edit_user/:id',
+        component: UserEditFormComponent,
+        data: {
+          title: 'edit_user'
         }
       },
       {

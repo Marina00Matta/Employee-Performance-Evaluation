@@ -24,7 +24,6 @@ export class EvaluationCycleComponent implements OnInit{
 
   ngOnInit(): void {
     this.getEvaluationCycleList();
-    console.log("gg",this.evaluationCycleList)
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,

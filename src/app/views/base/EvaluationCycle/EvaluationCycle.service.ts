@@ -16,7 +16,6 @@ export class EvaluationCycleService {
   }
 
   saveEvaluationCycle(value){
-    //debugger
     return this.http.post('http://localhost:8000/api/evaluation_cycle',value);
   }
 
