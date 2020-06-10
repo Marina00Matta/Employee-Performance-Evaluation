@@ -6,9 +6,9 @@
       <div class="card-body">
         <form #EvaluationForm = "ngForm"  (ngSubmit)="onSubmit(EvaluationForm)" class="form-horizontal">
           <div class="form-group row" *ngFor="let eva of criterias">
-            <label class="col-md-3 col-form-label" for="Criteria">{{eva.name}}</label>
+            <label class="col-md-3 col-form-label" for="Criteria{{eva.id}}">{{eva.name}}</label>
             <div class="col-md-9"> 
-              <select id="criteriaType" ngModel name={{eva.id}} class="form-control" #typeIdRef="ngModel" required>
+              <select id="criteriaType{{eva.id}}" ngModel name={{eva.id}} class="form-control" #typeIdRef="ngModel" required>
                 <option value=1>Bad</option>
                 <option value=2>Good</option>
                 <option value=3>Very Good</option>

@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EvaluationService {
   
-  private _apiUrl='http://localhost:8000/evaluation';
+  private _apiUrl='http://localhost:8000/api/evaluation';
   constructor(private _http:HttpClient) { }
 
   storingEvaluationValue(evalution){
