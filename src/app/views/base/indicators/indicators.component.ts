@@ -65,7 +65,7 @@ export class IndicatorsComponent implements OnInit {
       id:new FormControl(this.editableObj.id),
       name:new FormControl(this.editableObj.name),
       criteria_id:new FormControl(this.editableObj.criteria_id),
-      is_positive :new FormControl(this.editableObj.is_positive === 0 ? false : true)
+      is_positive :new FormControl(this.editableObj.is_positive == 0 ? false : true)
     });
   }
 
