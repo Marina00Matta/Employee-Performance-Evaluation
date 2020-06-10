@@ -51,7 +51,6 @@ export class UserEditFormComponent implements OnInit {
   editUser(form: NgForm){
     if(form.valid){
       let myFormData= new FormData();
-      myFormData.append('avatar',this.filedata,this.filedata.name)
       console.log(form.value);
      
        

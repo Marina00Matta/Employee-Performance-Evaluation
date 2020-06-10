@@ -23,6 +23,7 @@ export class CriteriasComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCriteriaList();
+    this.getCriteriaTypeList();
 
   }
 

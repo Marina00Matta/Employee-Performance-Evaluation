@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute , Router} from '@angular/router';
 import { CriteriasService } from '../../../services/criterias.service';
 import { from } from 'rxjs';
 
@@ -11,7 +12,9 @@ import { from } from 'rxjs';
 })
 export class CriteriaFormsComponent implements OnInit {
   types;
-  constructor(private _criteriasService: CriteriasService,) { }
+  constructor(private _criteriasService: CriteriasService,
+    private route:ActivatedRoute ,
+    private router:Router ,) { }
 
   ngOnInit(): void {
     this._criteriasService.getCriteriaTypes().subscribe(dataType =>{      
@@ -27,6 +30,7 @@ export class CriteriaFormsComponent implements OnInit {
       console.log(res);
     });
     form.reset();
+    this.router.navigate(['/base/criteria'])
     }
   }
 

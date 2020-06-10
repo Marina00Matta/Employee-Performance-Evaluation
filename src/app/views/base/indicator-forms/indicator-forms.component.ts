@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { from } from 'rxjs';
 import { CriteriasService } from '../../../services/criterias.service';
 import { IndicatorsService } from '../../../services/indicators.service';
-import {Router} from '@angular/router';
+import { ActivatedRoute , Router} from '@angular/router';
 
 
 @Component({
@@ -16,7 +16,8 @@ export class IndicatorFormsComponent implements OnInit {
   indicators;
   constructor(private _indicatorsService: IndicatorsService,
     private _criteriasService: CriteriasService,
-    private _router: Router
+    private route:ActivatedRoute ,
+    private router:Router
     ) { }
 
   ngOnInit(): void {
@@ -32,11 +33,9 @@ export class IndicatorFormsComponent implements OnInit {
     console.log(form.value);
     this._indicatorsService.addIndicator(form.value).subscribe((res: any)=>{
       console.log(res);
-      // if(res.status){
-      //  this._router.navigate(['/#/base/indicator']);
-      // }
     });
     form.reset();
+    this.router.navigate(['/base/indicator']);
     }
   }
 
