@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../../services/users.service';
 import { EvaluationCycleService } from '../../base/EvaluationCycle/EvaluationCycle.service';
-import { NgForm } from '@angular/forms';
+import {  Router} from '@angular/router';
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
@@ -10,8 +10,7 @@ import { NgForm } from '@angular/forms';
 export class ReportsComponent implements OnInit {
   users;
   cycles;
-  constructor(private userService:UsersService , private evaluationCycle:EvaluationCycleService) { }
-
+  constructor(private userService:UsersService , private router:Router , private evaluationCycle:EvaluationCycleService) { }
   ngOnInit(): void {
     this.userService.getUsers().subscribe((res:any) =>{
       this.users=res.data;
@@ -23,8 +22,10 @@ export class ReportsComponent implements OnInit {
     })
   }
  
-  onSubmit(form: NgForm){
-    console.log(form.value);
-    
+  onClick(user_id,id){
+    console.log(user_id ,Number(id));
+    this.router.navigate(['/buttons/report-view',user_id,Number(id)])
+
   }
+  
 }

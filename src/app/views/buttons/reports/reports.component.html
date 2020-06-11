@@ -17,30 +17,27 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
-                <form #ReportForm = "ngForm"  (ngSubmit)="onSubmit(ReportForm)" class="form-horizontal">
                 <ng-template [ngIf]="user.name!=='Superadmin'">
-                <td><label ngModel>{{user.name}}</label></td>
-
+                <td><label>{{user.name}}</label></td>
             <td>
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label" for="cycle">Cycles</label>
                     <div class="col-md-9">  
-                      <select  ngModel name="cycle_id" class="form-control" #cycleIdRef="ngModel" required>
+                      <select  name="cycle_id" class="form-control" required #cycle>
                         <option *ngFor="let cycle of cycles" value={{cycle.id}}>{{cycle.start}}_{{cycle.end}}</option>
                       </select>
-                       <div *ngIf="cycleIdRef.touched && cycleIdRef.invalid" class="alert alert-danger" >
+                       <!-- <div *ngIf="cycleIdRef.touched && cycleIdRef.invalid" class="alert alert-danger" >
                         cycle is required
-                      </div> 
+                      </div>  -->
                     </div>
                 </div>
             </td> 
             <td>  
-               <div class="btn-group btn-group-md ml-2">
-                   <button type="button" class="btn btn-block btn-warning" [routerLink]="['/buttons/report-view',user.id]">Fetch Report </button> 
-                </div>
+              <div class="btn-group btn-group-md ml-2">
+                <a class="btn btn-block btn-warning"  (click)= onClick(user.id,cycle?.value) >Fetch Report </a> 
+             </div>
               </td>
                </ng-template>
-               </form>
               </tr>
             </tbody>
           </table>
