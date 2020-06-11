@@ -17,14 +17,15 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
+                <form #ReportForm = "ngForm"  (ngSubmit)="onSubmit(ReportForm)" class="form-horizontal">
                 <ng-template [ngIf]="user.name!=='Superadmin'">
-                <td>{{user.name}}</td>
+                <td><label ngModel>{{user.name}}</label></td>
 
             <td>
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label" for="cycle">Cycles</label>
                     <div class="col-md-9">  
-                      <select id="cycle" ngModel name="cycle_id" class="form-control" #cycleIdRef="ngModel" required>
+                      <select  ngModel name="cycle_id" class="form-control" #cycleIdRef="ngModel" required>
                         <option *ngFor="let cycle of cycles" value={{cycle.id}}>{{cycle.start}}_{{cycle.end}}</option>
                       </select>
                        <div *ngIf="cycleIdRef.touched && cycleIdRef.invalid" class="alert alert-danger" >
@@ -35,10 +36,11 @@
             </td> 
             <td>  
                <div class="btn-group btn-group-md ml-2">
-                   <button type="button" class="btn btn-block btn-warning" [routerLink]="['/buttons/evaluate-form',user.id]">Fetch Report </button> -->
+                   <button type="button" class="btn btn-block btn-warning" [routerLink]="['/buttons/report-view',user.id]">Fetch Report </button> 
                 </div>
               </td>
                </ng-template>
+               </form>
               </tr>
             </tbody>
           </table>

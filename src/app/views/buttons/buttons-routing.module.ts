@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { EvaluationComponent } from './evaluation/evaluation.component';
 import { EvaluationFormComponent } from './evaluation-form/evaluation-form.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ReportViewComponent } from './report-view/report-view.component'
+
 const routes: Routes = [
   {
     path: '',
@@ -26,6 +28,13 @@ const routes: Routes = [
         component: ReportsComponent,
         data: {
           title: 'reports'
+        }
+      },
+      {
+        path: 'report-view/:id',
+        component: ReportViewComponent,
+        data: {
+          title: 'reports-view'
         }
       },
       {
