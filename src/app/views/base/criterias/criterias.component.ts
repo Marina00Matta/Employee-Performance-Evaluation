@@ -28,12 +28,8 @@ export class CriteriasComponent implements OnInit {
   ngOnInit(): void {
     this.getCriteriaList();
     this.getCriteriaTypeList();
-    // this.getTrashedCriteriaList();
 
   }
-
- 
-
   getCriteriaTypeList(){
     this._criteriasService.getCriteriaTypes().subscribe(dataType =>{
       console.log(dataType)
@@ -43,11 +39,9 @@ export class CriteriasComponent implements OnInit {
 
   deleteFunction(id){
     this._criteriasService.deleteCriteria(id).subscribe(()=>{console.log('deleted');
-    location.reload();
     });
-          console.log(id);
-    this.getCriteriaList();
-    
+              console.log(id);
+    this.getCriteriaList();    
   }
   getCriteriaList(){
     this._criteriasService.getCriteria().subscribe(data =>{
@@ -74,7 +68,6 @@ export class CriteriasComponent implements OnInit {
 
   closeEditModal(){
     this.modalEditRef.hide();
-    //this.initForm();
   }
 
   
