@@ -67,6 +67,8 @@ export class IndicatorsComponent implements OnInit {
   restoreFunction(id){
     this._indicatorService.restoreTrash(id).subscribe(data =>{
       console.log(data)
+      location.reload();
+
     })
   }
 
