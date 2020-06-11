@@ -43,7 +43,7 @@ export class CriteriasComponent implements OnInit {
 
   deleteFunction(id){
     this._criteriasService.deleteCriteria(id).subscribe(()=>{console.log('deleted');
-    location.reload();
+    // location.reload();
     });
           console.log(id);
     this.getCriteriaList();
