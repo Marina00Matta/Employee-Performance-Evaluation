@@ -31,7 +31,8 @@ const routes: Routes = [
         }
       },
       {
-        path: 'report-view',
+
+        path: 'report-view/:id/:Cid',
         component: ReportViewComponent,
         data: {
           title: 'reports-view'
