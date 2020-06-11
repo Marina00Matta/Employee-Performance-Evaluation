@@ -42,9 +42,12 @@ export class CriteriasComponent implements OnInit {
   }
 
   deleteFunction(id){
-    this._criteriasService.deleteCriteria(id).subscribe(()=>console.log('deleted'));
+    this._criteriasService.deleteCriteria(id).subscribe(()=>{console.log('deleted');
+    location.reload();
+    });
           console.log(id);
     this.getCriteriaList();
+    
   }
   getCriteriaList(){
     this._criteriasService.getCriteria().subscribe(data =>{
@@ -61,7 +64,8 @@ export class CriteriasComponent implements OnInit {
   restoreFunction(id){
     this._criteriasService.restoreTrash(id).subscribe(data =>{
       console.log(data)
-      this.router.navigate(['/base/criteria'])
+      location.reload();
+      // this.router.navigate(['/base/criteria'])
     })
   }
 
