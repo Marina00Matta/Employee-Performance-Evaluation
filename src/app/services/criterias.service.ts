@@ -29,4 +29,10 @@ export class CriteriasService {
     console.log("id",id)
     return this._http.put('http://localhost:8000/api/criteria/'+id,value);
   }
+  getTrash(){
+    return this._http.get(`${this._apiUrl}s/trash`)
+  }
+  restoreTrash(id){
+    return this._http.get(`${this._apiUrl}/trash/${id}`)
+  }
 }

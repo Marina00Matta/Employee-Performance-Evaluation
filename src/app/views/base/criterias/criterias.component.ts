@@ -8,6 +8,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FireAlertService } from 'src/app/services/fire-alert.service';
 import {EvaluationCycle} from 'src/app/interfaces/EvaluationCycle';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute , Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-criterias',
@@ -15,15 +17,18 @@ import { DatePipe } from '@angular/common';
 })
 export class CriteriasComponent implements OnInit {
   criterias;
+  trashCriterias;
   types; 
   editableCriteriaObj : Criteria;
   editCriteria : FormGroup;
   constructor(private _criteriasService: CriteriasService,private modalService: BsModalService,
-    private alert:FireAlertService) { }
+    private alert:FireAlertService, private route:ActivatedRoute ,
+    private router:Router ,) { }
 
   ngOnInit(): void {
     this.getCriteriaList();
     this.getCriteriaTypeList();
+    this.getTrashedCriteriaList();
 
   }
 
@@ -45,6 +50,18 @@ export class CriteriasComponent implements OnInit {
     this._criteriasService.getCriteria().subscribe(data =>{
       console.log(data)
       this.criterias = data;
+    })
+  }
+  getTrashedCriteriaList(){
+    this._criteriasService.getTrash().subscribe(data =>{
+      console.log(data)
+      this.trashCriterias = data;
+    })
+  }
+  restoreFunction(id){
+    this._criteriasService.restoreTrash(id).subscribe(data =>{
+      console.log(data)
+      this.router.navigate(['/base/criteria'])
     })
   }
 

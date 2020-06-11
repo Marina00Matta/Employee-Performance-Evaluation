@@ -44,6 +44,35 @@
               </td>
               </tr>
             </tbody>
+
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i> Trashed Criterias
+            </div>
+            <thead>
+              <tr>
+                <th>Criteria Name</th>
+                <th>Type</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let trash of trashCriterias" >
+                <td>{{trash.name}}</td>
+                <td>
+                  <div *ngFor="let type of types">
+                    <div *ngIf= "type.id == trash.type_id">
+                      {{type.type}}
+                    </div>
+                  </div>
+                </td>
+                <td>  
+               <div class="btn-group btn-group-md ml-2">
+                  <button type="button" class="btn btn-block btn-warning" (click) = restoreFunction(trash.id)>Restore</button>
+                </div>
+              </td>
+              </tr>
+            </tbody>
+            
           </table>
         </div>
       </div>
