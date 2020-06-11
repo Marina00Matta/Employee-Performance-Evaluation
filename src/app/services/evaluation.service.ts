@@ -14,4 +14,7 @@ export class EvaluationService {
   storingEvaluationValue(evalution){
    return this._http.post(this._apiUrl , evalution);
   }
+  getEvaluationReport(id,cid){
+    return this._http.get(`${this._apiUrl}/${id}/${cid}`);
+  }
 }
