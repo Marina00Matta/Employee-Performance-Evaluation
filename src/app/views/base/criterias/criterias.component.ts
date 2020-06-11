@@ -28,7 +28,7 @@ export class CriteriasComponent implements OnInit {
   ngOnInit(): void {
     this.getCriteriaList();
     this.getCriteriaTypeList();
-    this.getTrashedCriteriaList();
+    // this.getTrashedCriteriaList();
 
   }
 
@@ -55,20 +55,7 @@ export class CriteriasComponent implements OnInit {
       this.criterias = data;
     })
   }
-  getTrashedCriteriaList(){
-    this._criteriasService.getTrash().subscribe(data =>{
-      console.log(data)
-      this.trashCriterias = data;
-    })
-  }
-  restoreFunction(id){
-    this._criteriasService.restoreTrash(id).subscribe(data =>{
-      console.log(data)
-      location.reload();
-      // this.router.navigate(['/base/criteria'])
-    })
-  }
-
+  
   initEditForm(){
     this.editCriteria = new FormGroup({
       id:new FormControl(this.editableCriteriaObj.id),

@@ -11,7 +11,7 @@ import { ActivatedRoute , Router} from '@angular/router';
   styleUrls: ['./trashed-criterias.component.css']
 })
 export class TrashedCriteriasComponent implements OnInit {
-  criterias;
+  trashCriterias;
   types;
   constructor(
     private _criteriasService: CriteriasService,
@@ -19,10 +19,9 @@ export class TrashedCriteriasComponent implements OnInit {
     private router:Router) { }
 
   ngOnInit(): void {
-    this._criteriasService.getTrash().subscribe(dataType =>{
-      console.log(dataType);
-      this.criterias = dataType;
-    });
+    this.getTrashedCriteriaList();
+    this.getCriteriaTypeList();
+  
   }
   getCriteriaTypeList(){
     this._criteriasService.getCriteriaTypes().subscribe(dataType =>{
@@ -30,6 +29,20 @@ export class TrashedCriteriasComponent implements OnInit {
       this.types = dataType;
     })
   }
+  getTrashedCriteriaList(){
+    this._criteriasService.getTrash().subscribe(data =>{
+      console.log("trash",data)
+      this.trashCriterias = data;
+    })
+  }
+  restoreFunction(id){
+    this._criteriasService.restoreTrash(id).subscribe(data =>{
+      console.log(data)
+      // location.reload();
+      this.router.navigate(['/base/criteria'])
+    })
+  }
+
 
 
 }

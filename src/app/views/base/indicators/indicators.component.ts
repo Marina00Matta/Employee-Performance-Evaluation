@@ -60,7 +60,7 @@ export class IndicatorsComponent implements OnInit {
   }
   getTrashedIndicatorList(){
     this._indicatorService.getTrash().subscribe(data =>{
-      console.log(data)
+      console.log("trash",data)
       this.trashIndicators = data;
     })
   }

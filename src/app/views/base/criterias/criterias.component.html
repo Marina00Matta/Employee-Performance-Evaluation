@@ -12,6 +12,9 @@
           <div class="btn-group btn-group-md ml-2">
             <button type="button" class="btn  btn-success mb-lg-3 mr-3"  [routerLink]="['/base/criteria-forms']">New Criteria</button>
           </div>
+          <div class="btn-group btn-group-md ml-2">
+            <button type="button" class="btn  btn-success mb-lg-3 mr-3"  [routerLink]="['/base/trashed-criterias']">See Trash</button>
+          </div>
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -41,34 +44,6 @@
                 <div class="btn-group btn-group-md ml-2">
                     <button type="button" class="btn btn-block btn-danger" (click) = deleteFunction(criteria.id)>Delete</button>
                   </div>
-              </td>
-              </tr>
-            </tbody>
-
-            <div class="card-header">
-              <i class="fa fa-align-justify"></i> Trashed Criterias
-            </div>
-            <thead>
-              <tr>
-                <th>Criteria Name</th>
-                <th>Type</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let trash of trashCriterias" >
-                <td>{{trash.name}}</td>
-                <td>
-                  <div *ngFor="let type of types">
-                    <div *ngIf= "type.id == trash.type_id">
-                      {{type.type}}
-                    </div>
-                  </div>
-                </td>
-                <td>  
-               <div class="btn-group btn-group-md ml-2">
-                  <button type="button" class="btn btn-block btn-warning" (click) = restoreFunction(trash.id)>Restore</button>
-                </div>
               </td>
               </tr>
             </tbody>
