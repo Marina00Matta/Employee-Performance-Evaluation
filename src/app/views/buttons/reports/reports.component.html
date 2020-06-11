@@ -17,7 +17,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
-                <form #ReportForm = "ngForm"  (ngSubmit)="onSubmit(ReportForm)" class="form-horizontal">
+                <!-- <form #ReportForm = "ngForm"  (ngSubmit)="onSubmit(ReportForm)" class="form-horizontal"> -->
                 <ng-template [ngIf]="user.name!=='Superadmin'">
                 <td><label ngModel>{{user.name}}</label></td>
 
@@ -36,11 +36,11 @@
             </td> 
             <td>  
                <div class="btn-group btn-group-md ml-2">
-                   <button type="button" class="btn btn-block btn-warning" [routerLink]="['/buttons/report-view',user.id]">Fetch Report </button> 
+                   <button type="button" class="btn btn-block btn-warning" (click)=onClick() >Fetch Report </button> 
                 </div>
               </td>
                </ng-template>
-               </form>
+               <!-- </form> -->
               </tr>
             </tbody>
           </table>
