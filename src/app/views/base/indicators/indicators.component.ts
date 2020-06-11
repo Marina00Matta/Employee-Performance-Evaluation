@@ -19,9 +19,6 @@ import { DatePipe } from '@angular/common';
 })
 export class IndicatorsComponent implements OnInit {
   indicators;
-  // criterias;
-  // constructor(private _indicatorService: IndicatorsService,
-  //   private _criteriaService: CriteriasService) { }
 
   // ngOnInit(): void {
   //   this.getIndicatorList();
@@ -41,7 +38,7 @@ export class IndicatorsComponent implements OnInit {
   }
   
   deleteIndicator(id){
-    this._indicatorService.deleteIndicator(id).subscribe(() =>{})
+    this._indicatorService.deleteIndicator(id).subscribe(() =>{location.reload();})
     console.log(id)
     this.getIndicatorList();
   }
