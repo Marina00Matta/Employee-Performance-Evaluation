@@ -9,7 +9,12 @@
         <div class="card-body">
           
               <div *ngFor="let criteria of criterias">
-               
+                <div class="card-body">
+                  <dl class="row">
+                  <dt class="col-sm-4"> {{criteria.name}}</dt>
+                  <dd class="col-sm-8">{{criteria.value}}</dd>
+                  </dl>
+                  </div> 
               </div>
       </div>              
 
