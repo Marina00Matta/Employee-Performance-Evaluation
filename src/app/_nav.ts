@@ -50,6 +50,11 @@ export const navItems: INavData[] = [
         name: 'Evaluation',
         url: '/buttons/evaluation',
         icon: 'icon-cursor'
+      },
+      {
+        name: 'Reports',
+        url: '/buttons/reports',
+        icon: 'icon-cursor'
       }
     ]
   },

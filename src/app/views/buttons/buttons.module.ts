@@ -8,6 +8,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsRoutingModule } from './buttons-routing.module';
 import { EvaluationComponent } from './evaluation/evaluation.component';
 import { EvaluationFormComponent } from './evaluation-form/evaluation-form.component';
+import { ReportsComponent } from './reports/reports.component';
 
 // Angular
 
@@ -20,7 +21,9 @@ import { EvaluationFormComponent } from './evaluation-form/evaluation-form.compo
   ],
   declarations: [
     EvaluationComponent,
-    EvaluationFormComponent
+    EvaluationFormComponent,
+    ReportsComponent,
+    ViewReportComponent
   ]
 })
 export class ButtonsModule { }

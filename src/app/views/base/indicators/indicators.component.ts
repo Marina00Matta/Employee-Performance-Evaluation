@@ -42,7 +42,6 @@ export class IndicatorsComponent implements OnInit {
   deleteIndicator(id){
     this._indicatorService.deleteIndicator(id).subscribe(() =>{location.reload();})
     console.log(id)
-    this.getIndicatorList();
   }
 
   getIndicatorList(){
