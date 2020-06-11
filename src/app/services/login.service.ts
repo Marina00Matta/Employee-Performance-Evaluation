@@ -2,11 +2,13 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from 'src/app/interfaces/User';
 @Injectable({
     providedIn : 'root'
 })
 
 export class LoginService {
+    user : User;
     constructor(private http: HttpClient,private route:Router , private cookieService: CookieService){
     }
 
@@ -55,8 +57,10 @@ export class LoginService {
         })
         .toPromise()
         .then((result) => {
-          let token = result['token'];
+          let token = result['token']; 
           sessionStorage.setItem('token', token);
+          let user_role = result['user'][0];
+          sessionStorage.setItem('user_role',user_role);
           this.route.navigate(['/dashboard']);
         })
         .catch((error) => console.log(error));
