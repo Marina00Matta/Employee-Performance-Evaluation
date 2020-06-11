@@ -32,13 +32,15 @@ export class IndicatorsComponent implements OnInit {
   editableObj : Indicator;
   editIndicator : FormGroup;
   criterias;
+  trashIndicators;
   constructor(private _indicatorService: IndicatorsService,private modalService: BsModalService,
     private alert:FireAlertService,private _criteriasService: CriteriasService) { }
 
   ngOnInit(): void {
     this.getIndicatorList();
     this.getCriteriaList();
-  }
+    this.getTrashedIndicatorList();
+    }
   
   deleteIndicator(id){
     this._indicatorService.deleteIndicator(id).subscribe(() =>{})
@@ -58,6 +60,17 @@ export class IndicatorsComponent implements OnInit {
       console.log("cccc",dataType);
       this.criterias = dataType;
     });
+  }
+  getTrashedIndicatorList(){
+    this._indicatorService.getTrash().subscribe(data =>{
+      console.log(data)
+      this.trashIndicators = data;
+    })
+  }
+  restoreFunction(id){
+    this._indicatorService.restoreTrash(id).subscribe(data =>{
+      console.log(data)
+    })
   }
 
   initEditForm(){

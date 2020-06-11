@@ -29,7 +29,10 @@ export class IndicatorsService {
     console.log("id",id)
     return this._http.put('http://localhost:8000/api/indicator/'+id,value);
   }
-  // addIndicator(id,indicator){
-  //   return this._http.post(this._apiUrl,indicator)
-  // }
+  getTrash(){
+    return this._http.get(`${this._apiUrl}s/trash`)
+  }
+  restoreTrash(id){
+    return this._http.get(`${this._apiUrl}/trash/${id}`)
+  }
 }
