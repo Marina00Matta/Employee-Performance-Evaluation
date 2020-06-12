@@ -43,7 +43,7 @@ import { RoleFormComponent } from './role-form/role-form.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users-form/users-form.component';
 
-import { EvaluationCycleService } from './EvaluationCycle/EvaluationCycle.service';
+import { EvaluationCycleService } from '../../services/EvaluationCycle.service';
 import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.component';
 import { UserEditFormComponent } from './user-edit-form/user-edit-form.component';
 import { TrashedCriteriasComponent } from './trashed-criterias/trashed-criterias.component';

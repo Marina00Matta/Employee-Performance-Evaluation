@@ -4,7 +4,7 @@ import {  ActivatedRoute,Router} from '@angular/router';
 import * as jsPDF from 'jspdf';
 import { ViewChild, ElementRef } from '@angular/core';
 import { UsersService } from '../../../services/users.service';
-import { EvaluationCycleService } from '../../base/EvaluationCycle/EvaluationCycle.service';
+import { EvaluationCycleService } from '../../../services/EvaluationCycle.service';
 
 
 @Component({
