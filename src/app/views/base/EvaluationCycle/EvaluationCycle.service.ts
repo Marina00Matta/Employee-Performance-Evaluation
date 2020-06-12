@@ -28,5 +28,10 @@ export class EvaluationCycleService {
   deleteEvaluationCycle(id){
     return this.http.delete('http://localhost:8000/api/evaluation_cycle/'+id);
   }
+
+
+  getEvaluationCycleById(id){
+    return this.http.get('http://localhost:8000/api/evaluation_cycle/'+id);
+  }
   
 }

@@ -1,26 +1,33 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn" >
 
     <div class="row" >
-    <div class="col-lg">
+    <div class="col-lg" id="htmlData" #htmlData>
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Results
+          <i class="fa fa-align-justify"></i> Report
         </div>
         <div class="card-body">
-          
+              <h1>Name: {{user.name}}</h1>
+              <h2>Cycle: {{cycle.start}} - {{cycle.end}}</h2>
               <div *ngFor="let criteria of criterias">
                 <div class="card-body">
-                  <dl class="row">
+                    <div class="row">
+                            {{criteria.name}}:  {{criteria.value}}
+                    </div>
+                  <!-- <dl class="row">
                   <dt class="col-sm-4"> {{criteria.name}}</dt>
                   <dd class="col-sm-8">{{criteria.value}}</dd>
-                  </dl>
+                  </dl> -->
                   </div> 
               </div>
       </div>              
-
+     
            
         </div>
       </div>
+      <div class="col-md-4 text-right">
+        <button class="btn btn-success btn-block" (click)="openPDF()">Open PDF</button>
+     </div>
     </div>
     </div>
 
