@@ -7,8 +7,8 @@
           <i class="fa fa-align-justify"></i> Report
         </div>
         <div class="card-body">
-              <h1>Name: {{user.name}}</h1>
-              <h2>Cycle: {{cycle.start}} - {{cycle.end}}</h2>
+              <h1>Name: {{user?.name}}</h1>
+              <h2>Cycle: {{cycle?.start | date:'MM/dd/yyyy'}} - {{cycle?.end | date:'MM/dd/yyyy'}}</h2>
               <div *ngFor="let criteria of criterias">
                 <div class="card-body">
                     <div class="row">
@@ -25,7 +25,7 @@
            
         </div>
       </div>
-      <div class="col-md-4 text-right" [ngIf]="user.name!=='Superadmin'">
+      <div class="col-md-4 text-right" >
         <button class="btn btn-success btn-block" (click)="openPDF()">Open PDF</button>
      </div>
     </div>
