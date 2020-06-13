@@ -64,11 +64,20 @@
       <form class="text-left" [formGroup]="editCriteria" (ngSubmit)="edit(editCriteria.value)">
         <p class="my-2">Criteria Name</p>
         <input class="py-2 w-100 ui-inputtext ui-corner-all" formControlName="name">
+        <small class="danger" *ngIf="!name.valid && (name.dirty || name.touched) && name.errors.required" style="color: red;font-size: 14px;">
+          Must enter name .
+        </small>
+        <div *ngIf="name.errors.minlength"  style="color: red;font-size: 14px;">
+          Name must be at least 3 characters long.
+        </div>
         <p class="my-2">Type</p>
         <select formControlName="type_id" class="form-control">
           <option *ngFor="let type of types" value={{type.id}}>{{type.type}}</option>
         </select>
         <div class="modal-footer border-0">
+          <small class="danger" *ngIf="!type_id.valid && (type_id.dirty || type_id.touched) && type_id.errors.required" style="color: red;font-size: 14px;"  class="alert alert-danger">
+            Must enter criteria_type
+          </small>
           <button type="submit" class="btn btn-primary ml-3">Save</button>
           <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
         </div>
