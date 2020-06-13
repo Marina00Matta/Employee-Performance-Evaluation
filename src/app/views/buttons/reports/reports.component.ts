@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../../services/users.service';
-import { EvaluationCycleService } from '../../base/EvaluationCycle/EvaluationCycle.service';
+import { EvaluationCycleService } from '../../../services/EvaluationCycle.service';
 import {  Router} from '@angular/router';
 @Component({
   selector: 'app-reports',

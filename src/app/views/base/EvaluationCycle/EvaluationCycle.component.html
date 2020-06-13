@@ -30,7 +30,8 @@
                    <td>{{group.cycle}}</td>
                    <td style="width:20%;">  
                     <div class="btn-group btn-group-md ml-2">
-                      <button type="button" class="btn btn-block btn-primary" (click)="openEditModal(group,EditScreen)">Edit</button>
+                      <button type="button" class="btn btn-block btn-primary" (click)="openEditModal(group,EditScreen)"
+                              [disabled]="(group.is_current != 1)? true:false">Edit</button>
                     </div>
                     <div class="btn-group btn-group-md ml-2">
                       <button type="button" class="btn btn-block btn-primary" (click)="delete(group.id)">Delete</button>
@@ -52,6 +53,9 @@
       <form class="text-left" [formGroup]="newEvaluationCycle" (ngSubmit)="save(newEvaluationCycle.value)">
         <p class="my-2">Start Date</p>
         <input class="form-control" id="date-input" type="date" formControlName="start" placeholder="date">
+        <small class="danger" *ngIf="!start.valid && (start.dirty || start.touched) && start.errors.required" style="color: red;font-size: 14px;">
+          Must enter start date
+        </small>
         <p class="my-2">Cycle</p>
         <div class="input-group flex-nowrap">
           <input class="py-2 w-100  ui-inputtext ui-corner-all  " formControlName="cycle" style="width:80%;">
@@ -59,6 +63,10 @@
             <span class="ui-inputtext ui-corner-all input-group-text" id="addon-wrapping">Months</span>
           </div>
         </div>
+        <small class="danger" *ngIf="!cycle.valid && (cycle.dirty || cycle.touched) && cycle.errors.required" style="color: red;font-size: 14px;">
+          Must enter cycle
+        </small>
+        <p *ngIf="cycle.errors.pattern" class="text-danger">Number Only</p>
         <div class="modal-footer border-0">
           <button type="submit" class="btn btn-primary ml-3">Save</button>
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
