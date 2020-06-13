@@ -12,6 +12,7 @@ export class ReportsComponent implements OnInit {
   cycles;
   constructor(private userService:UsersService , private router:Router , private evaluationCycle:EvaluationCycleService) { }
   ngOnInit(): void {
+
     this.userService.getUsers().subscribe((res:any) =>{
       this.users=res.data;
       console.log(res.data);

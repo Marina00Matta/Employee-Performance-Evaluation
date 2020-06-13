@@ -14,6 +14,7 @@ export class EvaluationComponent implements OnInit {
 
   ngOnInit(): void {
     this._userservice.getUserByRole(this.role,this.userId).subscribe(data =>{
+      console.log(data);
      if(this.role == 'Junior Developer'){
       data[2].forEach(ele => {
         if (ele.id != this.userId) {

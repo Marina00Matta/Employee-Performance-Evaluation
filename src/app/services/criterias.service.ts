@@ -35,4 +35,7 @@ export class CriteriasService {
   restoreTrash(id){
     return this._http.get(`${this._apiUrl}/trash/${id}`)
   }
+  getByRole(id){
+    return this._http.get(`${this._apiUrl}/role/${id}`)
+  }
 }

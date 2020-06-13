@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute , Router} from '@angular/router';
 import { EvaluationService } from '../../../services/evaluation.service';
 import { CriteriasService } from '../../../services/criterias.service';
+import { UsersService } from '../../../services/users.service';
+
 @Component({
   selector: 'app-evaluation-form',
   templateUrl: './evaluation-form.component.html',
@@ -10,24 +12,32 @@ import { CriteriasService } from '../../../services/criterias.service';
 })
 export class EvaluationFormComponent implements OnInit {
   criterias;
+   role_id:number ;
   user_id:number;
 
   constructor(private criteriaService: CriteriasService,
               private route:ActivatedRoute ,
               private router:Router ,
-              private evaluationService:EvaluationService) {}
+              private evaluationService:EvaluationService,
+              private _userservice:UsersService) {}
 
   ngOnInit(): void {
-    this.criteriaService.getCriteria().subscribe(data=>{
+    this.route.params.subscribe(params =>{
+      this.user_id = +params['id'];
+    });
+    this._userservice.getUserById(this.user_id).subscribe(data=>{
+      console.log('user',data['role']);
+      this.role_id = data['role'];
+
+    });
+
+    this.criteriaService.getByRole(8).subscribe(data=>{
       this.criterias=data;
       console.log(data);
       
     });
-
-    this.route.params.subscribe(params =>{
-      this.user_id = +params['id'];
-    });
   }
+
 
   onSubmit(form: NgForm){
     if(form.valid){
