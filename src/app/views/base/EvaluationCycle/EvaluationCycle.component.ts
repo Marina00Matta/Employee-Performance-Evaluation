@@ -1,6 +1,6 @@
 import { Component, OnInit ,TemplateRef} from '@angular/core';
-import { EvaluationCycleService } from './EvaluationCycle.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { EvaluationCycleService } from '../../../services/EvaluationCycle.service';
+import { FormControl, FormGroup ,Validators} from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'; 
 import { FireAlertService } from 'src/app/services/fire-alert.service';
 import {EvaluationCycle} from 'src/app/interfaces/EvaluationCycle';
@@ -34,12 +34,11 @@ export class EvaluationCycleComponent implements OnInit{
 
   initForm(){
     this.newEvaluationCycle = new FormGroup({
-      start: new FormControl(''),
+      start: new FormControl('',[Validators.required]),
       end: new FormControl(''),
-      cycle: new FormControl('')
+      cycle: new FormControl('',[Validators.required, Validators.pattern("^[0-9]*$")])
     });
   }
-
 
   initEditForm(){
     let date = this.datePipe.transform(new Date(this.editableObj.start), 'yyyy-MM-dd');
@@ -62,12 +61,12 @@ export class EvaluationCycleComponent implements OnInit{
       .subscribe(result => {
         console.log(result);
         this.modalRef.hide();
-        if(result){
+       if(!result["error_message"]){
           this.alert.fireAlert("success","Data inserted successfully","");
           this.getEvaluationCycleList();
           this.initForm();
         }else{
-          this.alert.fireAlert("error","There is an error when insert this data","");
+          this.alert.fireAlert("error",result["error_message"],"");
           this.getEvaluationCycleList();
           this.initForm();
         }
@@ -132,5 +131,7 @@ export class EvaluationCycleComponent implements OnInit{
     this.modalEditRef = this.modalService.show(template);
   }
 
+  get start(){return this.newEvaluationCycle.get('start');}
 
+  get cycle(){return this.newEvaluationCycle.get('cycle');}
 }
