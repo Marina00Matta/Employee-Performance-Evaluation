@@ -59,6 +59,8 @@ export class LoginService {
         .then((result) => {
           let token = result['token']; 
           sessionStorage.setItem('token', token);
+          console.log(result['data']['id']);
+          
           let user_role = result['user'][0];
           sessionStorage.setItem('user_role',user_role);
           this.route.navigate(['/dashboard']);

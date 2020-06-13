@@ -5,23 +5,11 @@
       </div>
       <div class="card-body">
         <form #EditUserForm = "ngForm" enctype="multipart/form-data" (ngSubmit)="editUser(EditUserForm)" class="form-horizontal">
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="user">Employee Name</label>
-            <div class="col-md-9">
-              <input type="text" ngModel id="user" name="name" class="form-control"  #nameRef="ngModel" [(ngModel)]=user.name  placeholder="Enter employee name here....." required>
-              <div *ngIf="nameRef.touched && nameRef.invalid" class="alert alert-danger" >
-                Position is required </div>
-            </div>
+          <div class=" row">
+           <h2>{{user.name}}</h2>
           </div>
          
-         <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="email">Email</label>
-            <div class="col-md-9">
-                <input type="email" ngModel id="email" name="email" class="form-control" [(ngModel)]=user.email  #emailRef="ngModel" placeholder="Enter email here....." required>
-                <div *ngIf="emailRef.touched && emailRef.invalid" class="alert alert-danger" >
-                  Position is required </div>
-              </div>
-         </div>
+         
          <div class="form-group row">
           <label class="col-md-3 col-form-label" for="Position">Position</label>
             <div class="col-md-9">  
@@ -33,20 +21,12 @@
             </div> -->
           </div>
       </div>
-         <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="hiring_at">Hiring Date</label>
-          <div class="col-md-9">
-            <input class="form-control" id="hiring-date" ngModel type="datetime" name="hiring_at" [(ngModel)]=user.hiring_at #hiringAtRef="ngModel" placeholder="Enter hiring date....." required>
-            <div *ngIf="hiringAtRef.touched && hiringAtRef.invalid" class="alert alert-danger" >
-              Hiring Date is required </div>
-          </div>
-        </div>
+        
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="supervisor">Supervisor</label>
           <div class="col-md-9">
             <select id="supervisor" ngModel [(ngModel)]=user.supervisor   name="supervisor" class="form-control">
-              <!-- <option  value={{user.id}} sselected="selected" >
-                {{user.name}} </option> -->
+            
               <option *ngFor="let user of users" value={{user.id}}  >
                 <ng-template [ngIf]="user.name!=='Superadmin'">
                   {{user.name}}
@@ -55,17 +35,7 @@
                 </option>
             </select>
           </div>
-      </div>
-        <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="file-input">Avatar input</label>
-          <div class="col-md-9">
-            <input type="file" id="file-input" #fileupload ngModel [(ngModel)]=user.avatar name="avatar" (change)="fileEvent($event)"/>
-          </div>
         </div>
-        <!-- <div class="col-md-9">
-          <input type="email" ngModel id="avatar" name="avatar" class="form-control"    placeholder="Enter email here....." required>
-          
-   </div> -->
           <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-dot-circle-o"></i> Update</button>
         </form>
 
