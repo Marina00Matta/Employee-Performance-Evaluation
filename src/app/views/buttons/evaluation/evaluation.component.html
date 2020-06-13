@@ -20,7 +20,7 @@
                 <td>{{user.name}}</td>
             <td>  
                <div class="btn-group btn-group-md ml-2">
-                  <button type="button" class="btn btn-block btn-warning" [routerLink]="['/buttons/evaluate-form',user.id]">Evaluate</button>
+                  <button type="button" class="btn btn-block btn-warning" (click)="onClick(user.id)" >Evaluate</button>
                 </div>
               </td>
                </ng-template>
