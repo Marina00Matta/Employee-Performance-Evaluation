@@ -20,6 +20,8 @@ export class EvaluationFormComponent implements OnInit {
   ngOnInit(): void {
     this.criteriaService.getCriteria().subscribe(data=>{
       this.criterias=data;
+      console.log(data);
+      
     });
 
     this.route.params.subscribe(params =>{

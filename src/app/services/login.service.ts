@@ -58,9 +58,7 @@ export class LoginService {
         .toPromise()
         .then((result) => {
           let token = result['token']; 
-          sessionStorage.setItem('token', token);
-          console.log(result['data']['id']);
-          
+          sessionStorage.setItem('token', token)
           let user_role = result['user'][0];
           sessionStorage.setItem('user_role',user_role);
           let user_id = result['data']['id'];

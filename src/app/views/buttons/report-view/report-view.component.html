@@ -25,7 +25,7 @@
            
         </div>
       </div>
-      <div class="col-md-4 text-right">
+      <div class="col-md-4 text-right" [ngIf]="user.name!=='Superadmin'">
         <button class="btn btn-success btn-block" (click)="openPDF()">Open PDF</button>
      </div>
     </div>
