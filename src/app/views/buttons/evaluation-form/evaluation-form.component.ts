@@ -25,15 +25,22 @@ export class EvaluationFormComponent implements OnInit {
     this.route.params.subscribe(params =>{
       this.user_id = +params['id'];
     });
-    this._userservice.getUserById(this.user_id).subscribe(data=>{
-      console.log('user',data['role']);
-      this.role_id = data['role'];
 
+    this.route.params.subscribe(params =>{
+      this.role_id = +params['rid'];
     });
 
-    this.criteriaService.getByRole(8).subscribe(data=>{
+    // this._userservice.getUserById(this.user_id).subscribe(data=>{
+    //   console.log('user',data['role']);
+    //   this.role_id = data['role'];
+    //   console.log(this.role_id);
+
+    // });
+
+    this.criteriaService.getByRole(this.role_id,this.user_id).subscribe(data=>{
       this.criterias=data;
       console.log(data);
+      console.log(this.role_id);
       
     });
   }
