@@ -44,9 +44,9 @@ export class EvaluationCycleComponent implements OnInit{
     let date = this.datePipe.transform(new Date(this.editableObj.start), 'yyyy-MM-dd');
     this.editEvaluationCycle = new FormGroup({
       id: new FormControl(this.editableObj.id),
-      start: new FormControl(date),
+      start: new FormControl(date,[Validators.required]),
       end: new FormControl(this.editableObj.end),
-      cycle: new FormControl(this.editableObj.cycle),
+      cycle: new FormControl(this.editableObj.cycle,[Validators.required, Validators.pattern("^[0-9]*$")]),
       is_current: new FormControl(this.editableObj.is_current)
     });
   }
@@ -57,23 +57,31 @@ export class EvaluationCycleComponent implements OnInit{
   }
 
   save(value) {
-    this.evaluationCycleService.saveEvaluationCycle(value)
-      .subscribe(result => {
-        console.log(result);
-        this.modalRef.hide();
-       if(!result["error_message"]){
-          this.alert.fireAlert("success","Data inserted successfully","");
-          this.getEvaluationCycleList();
-          this.initForm();
-        }else{
-          this.alert.fireAlert("error",result["error_message"],"");
-          this.getEvaluationCycleList();
-          this.initForm();
-        }
-      });
+    if(this.newEvaluationCycle.valid)
+    {
+      this.evaluationCycleService.saveEvaluationCycle(value)
+        .subscribe(result => {
+          console.log(result);
+          this.modalRef.hide();
+        if(!result["error_message"]){
+            this.alert.fireAlert("success","Data inserted successfully","");
+            this.getEvaluationCycleList();
+            this.initForm();
+          }else{
+            this.alert.fireAlert("error",result["error_message"],"");
+            this.getEvaluationCycleList();
+            this.initForm();
+          }
+        });
+    }else{
+      this.alert.fireAlert("error","Please Complete all data in form","");
+    }
+
   }
 
   edit(value) {
+    if(this.newEvaluationCycle.valid)
+    {
     console.log("value",value)
     console.log("id",this.editableObj.id)
     this.evaluationCycleService.editEvaluationCycle(value,this.editableObj.id)
@@ -90,6 +98,8 @@ export class EvaluationCycleComponent implements OnInit{
           this.initEditForm();
         }
       });
+    }else{
+      this.alert.fireAlert("error","Please Complete all data in form","");}
   }
 
   delete(id){
@@ -134,4 +144,8 @@ export class EvaluationCycleComponent implements OnInit{
   get start(){return this.newEvaluationCycle.get('start');}
 
   get cycle(){return this.newEvaluationCycle.get('cycle');}
+
+  get startedit(){return this.editEvaluationCycle.get('start');}
+
+  get cycleedit(){return this.editEvaluationCycle.get('cycle');}
 }

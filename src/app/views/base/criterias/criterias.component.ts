@@ -1,5 +1,5 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CriteriaType } from 'src/app/interfaces/CriteriaType';
 import { Criteria } from 'src/app/interfaces/Criteria';
@@ -9,6 +9,7 @@ import { FireAlertService } from 'src/app/services/fire-alert.service';
 import {EvaluationCycle} from 'src/app/interfaces/EvaluationCycle';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute , Router} from '@angular/router';
+
 
 
 @Component({
@@ -54,8 +55,8 @@ export class CriteriasComponent implements OnInit {
   initEditForm(){
     this.editCriteria = new FormGroup({
       id:new FormControl(this.editableCriteriaObj.id),
-      name:new FormControl(this.editableCriteriaObj.name),
-      type_id:new FormControl(this.editableCriteriaObj.type_id),
+      name:new FormControl(this.editableCriteriaObj.name,[Validators.required,Validators.minLength(3)]),
+      type_id:new FormControl(this.editableCriteriaObj.type_id,[Validators.required])
     });
   }
 
@@ -73,6 +74,8 @@ export class CriteriasComponent implements OnInit {
 
   
   edit(value) {
+    if(this.editCriteria.valid)
+    {
     console.log("value",value)
     this._criteriasService.editCriteria(value,this.editableCriteriaObj.id)
       .subscribe(result => {
@@ -88,9 +91,18 @@ export class CriteriasComponent implements OnInit {
           //this.initEditForm();
         }
       });
+    }
+    else{
+      this.alert.fireAlert("error","Please Complete all data in form","");
+    }
+  }
+      get name(){return this.editCriteria.get('name');}
+
+      get type_id(){return this.editCriteria.get('type_id');}
+    
   }
 
 
   
 
-}
+

@@ -83,6 +83,9 @@
         <form class="text-left" [formGroup]="editEvaluationCycle" (ngSubmit)="edit(editEvaluationCycle.value)">
           <p class="my-2">Start Date</p>
           <input class="form-control" id="date-input" type="date" formControlName="start" placeholder="date">
+          <small class="danger" *ngIf="!startedit.valid && (startedit.dirty || startedit.touched) && startedit.errors.required" style="color: red;font-size: 14px;">
+            Must enter start date
+          </small>
           <p class="my-2">Cycle</p>
           <div class="input-group flex-nowrap">
             <input class="py-2 w-100  ui-inputtext ui-corner-all  " formControlName="cycle" style="width:80%;">
@@ -90,6 +93,10 @@
               <span class="ui-inputtext ui-corner-all input-group-text" id="addon-wrapping">Months</span>
             </div>
           </div>
+          <small class="danger" *ngIf="!cycleedit.valid && (cycleedit.dirty || cycleedit.touched) && cycleedit.errors.required" style="color: red;font-size: 14px;">
+            Must enter cycle
+          </small>
+          <p *ngIf="cycleedit.errors.pattern" class="text-danger">Number Only</p>
           <div class="modal-footer border-0">
             <button type="submit" class="btn btn-primary ml-3">Save</button>
             <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
