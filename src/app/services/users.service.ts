@@ -27,4 +27,8 @@ export class UsersService {
   editUser(id,user){
     return this._http.put(`${this._apiUrl}/${id}`,user)
   }
+
+  getUserByRole(role,id){
+    return this._http.get(`${this._apiUrl}s/${role}/${id}`)
+  }
 }

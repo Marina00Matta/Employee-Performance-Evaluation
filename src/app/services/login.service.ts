@@ -61,6 +61,8 @@ export class LoginService {
           sessionStorage.setItem('token', token);
           let user_role = result['user'][0];
           sessionStorage.setItem('user_role',user_role);
+          let user_id = result['data']['id'];
+          sessionStorage.setItem('user_id',user_id);
           this.route.navigate(['/dashboard']);
         })
         .catch((error) => console.log(error));
