@@ -1,20 +1,20 @@
 <div class="col-md-9">
     <div class="card">
       <div class="card-header">
-        <strong>User</strong> Form
+        <strong>Employee</strong> Form
       </div>
       <div class="card-body">
         <form #EditUserForm = "ngForm" enctype="multipart/form-data" (ngSubmit)="editUser(EditUserForm)" class="form-horizontal">
           <div class=" row">
-           <h2>{{user.name}}</h2>
+           <h2 class="pl-3">{{user?.name}}</h2>
           </div>
          
          
          <div class="form-group row">
           <label class="col-md-3 col-form-label" for="Position">Position</label>
             <div class="col-md-9">  
-              <select id="Position" ngModel name="role_id" class="form-control"   #roleRef="ngModel" required>
-                <option *ngFor="let position of roles" value={{position.id}}>{{position.name}}</option>
+              <select id="Position" ngModel name="role_id" class="form-control" [ngModel]="user?.role"  required>
+                <option *ngFor="let position of roles" value={{position.id}}>{{position?.name}}</option>
               </select>
             <!-- <div *ngIf="roleRef.touched && roleRef.invalid" class="alert alert-danger" >
               Position is required
@@ -25,11 +25,11 @@
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="supervisor">Supervisor</label>
           <div class="col-md-9">
-            <select id="supervisor" ngModel [(ngModel)]=user.supervisor   name="supervisor" class="form-control">
+            <select id="supervisor" ngModel [ngModel]="user?.supervisor"   name="supervisor" class="form-control">
             
               <option *ngFor="let user of users" value={{user.id}}  >
                 <ng-template [ngIf]="user.name!=='Superadmin'">
-                  {{user.name}}
+                  {{user?.name}}
                 </ng-template>
 
                 </option>

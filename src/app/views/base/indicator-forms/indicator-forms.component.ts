@@ -27,8 +27,6 @@ export class IndicatorFormsComponent implements OnInit {
     });
   }
   onSubmit(form: NgForm){
-    console.log(form);
-
     if(form.valid){
     console.log(form.value);
     this._indicatorsService.addIndicator(form.value).subscribe((res: any)=>{

@@ -20,11 +20,11 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let trash of trashCriterias" >
-                    <td>{{trash.name}}</td>
+                    <td>{{trash?.name}}</td>
                     <td>
                       <div *ngFor="let type of types">
                         <div *ngIf= "type.id == trash.type_id">
-                          {{type.type}}
+                          {{type?.type}}
                         </div>
                       </div>
                     </td>

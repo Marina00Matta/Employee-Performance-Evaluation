@@ -19,13 +19,6 @@ import { DatePipe } from '@angular/common';
 })
 export class IndicatorsComponent implements OnInit {
   indicators;
-
-  // ngOnInit(): void {
-  //   this.getIndicatorList();
-  //   this._criteriaService.getCriteria().subscribe(datatype=>{
-  //     this.criterias=datatype;
-  //     console.log(datatype);
-  //   })
   editableObj : Indicator;
   editIndicator : FormGroup;
   criterias;
@@ -76,7 +69,7 @@ export class IndicatorsComponent implements OnInit {
       id:new FormControl(this.editableObj.id),
       name:new FormControl(this.editableObj.name),
       criteria_id:new FormControl(this.editableObj.criteria_id),
-      is_positive :new FormControl(this.editableObj.is_positive == 0 ? false : true)
+      is_positive :new FormControl(this.editableObj.is_positive == 1 ? true : false)
     });
   }
 
