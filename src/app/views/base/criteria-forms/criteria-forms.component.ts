@@ -35,12 +35,12 @@ export class CriteriaFormsComponent implements OnInit {
   onSubmit(form: NgForm){
     if(form.valid){
       console.log(form.value);
-    //   this._criteriasService.addCriteria(form.value).subscribe((res: any)=>{
-    //     console.log(res);
-    //     if(res["errors"] && res["errors"]["name"]){
-    //       this.alert.fireAlert("error",res["errors"]["name"][0],"");
-    //     }
-    // });
+      this._criteriasService.addCriteria(form.value).subscribe((res: any)=>{
+        console.log(res);
+        if(res["errors"] && res["errors"]["name"]){
+          this.alert.fireAlert("error",res["errors"]["name"][0],"");
+        }
+    });
     form.reset();
     this.router.navigate(['/base/criteria'])
     }

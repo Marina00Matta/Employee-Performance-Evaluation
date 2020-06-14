@@ -1,0 +1,43 @@
+
+<div class="animated fadeIn">
+
+    <div class="row" >
+    <div class="col-lg ">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>Deleted Users
+        </div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Employee Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Hire Date</th>
+                <th>Leaving Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of trashedUsers">
+                <ng-template [ngIf]="user.name!=='Superadmin'">
+                <td><img  class="img-circle elevation-2 mx-3" style="width:100px; height:100px" src="http://localhost:8000{{user.avatar}}" alt="No User Avatar"/></td>
+                <td>{{user?.name}}</td>
+                <td>{{user?.email}}</td>
+                <td>{{user?.role}}</td>
+                <td>{{user?.hiring_at | date:'MM/dd/yyyy'}}</td>
+                <td>{{user?.deleted_at | date:'MM/dd/yyyy'}}</td>
+                <td>  
+               <div class="btn-group btn-group-md ml-2">
+                  <button type="button" class="btn btn-block btn-warning" (click) = restoreFunction(user.id)>Restore</button>
+                </div>
+              </td>
+               </ng-template>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>

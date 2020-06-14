@@ -11,6 +11,7 @@ import { UsersFormComponent } from './users-form/users-form.component';
 import { UserEditFormComponent } from './user-edit-form/user-edit-form.component';
 import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.component';
 import { TrashedCriteriasComponent } from './trashed-criterias/trashed-criterias.component';
+import { TrashUsersComponent } from './trash-users/trash-users.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,13 @@ const routes: Routes = [
         component: TrashedCriteriasComponent,
         data: {
           title: 'trashed criterias'
+        }
+      },
+      {
+        path: 'trashed-users',
+        component: TrashUsersComponent,
+        data: {
+          title: 'trashed users'
         }
       },
       {
