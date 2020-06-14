@@ -15,7 +15,7 @@ import { EvaluationCycleService } from '../../../services/EvaluationCycle.servic
 export class ReportViewComponent implements OnInit {
 
   @ViewChild('htmlData') htmlData:ElementRef;
-
+  user_role=sessionStorage.getItem('user_role');
   evaluations;
   criterias=[];
   userId:number;

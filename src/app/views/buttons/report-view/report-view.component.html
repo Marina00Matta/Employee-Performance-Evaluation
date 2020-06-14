@@ -22,7 +22,7 @@
       </div>
     </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf= "user_role == 'superadmin' || user_role == 'Admin'">
       <div class="col-md-4 text-right" >
         <button class="btn btn-success btn-block" (click)="openPDF()">Open PDF</button>
      </div>
