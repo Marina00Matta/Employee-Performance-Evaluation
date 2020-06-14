@@ -43,7 +43,7 @@ export class EvaluationComponent implements OnInit {
       console.log('user',data['role']);
       let role_id = data['role'];
       console.log(role_id);
-      this.router.navigate(['buttons/evaluate-form',id,role_id]);
+      this.router.navigate(['buttons/evaluate-form',role_id,id]);
 
     });
 
