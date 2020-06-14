@@ -17,7 +17,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
-                <ng-template [ngIf]="user.name!=='Superadmin'">
+                <ng-template *ngIf="user.role !='superadmin' || user.role !='Admin' || user.role !='Manager'">
                 <td><label>{{user.name}}</label></td>
             <td>
                 <div class="form-group row">

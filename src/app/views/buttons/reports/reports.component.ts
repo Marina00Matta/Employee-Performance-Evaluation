@@ -14,10 +14,11 @@ export class ReportsComponent implements OnInit {
   constructor(private userService:UsersService , private router:Router , private evaluationCycle:EvaluationCycleService) { }
   ngOnInit(): void {
 
-    if(this.user_role == 'superadmin' || this.user_role == 'Admin'){
+    if(this.user_role == 'superadmin' || this.user_role == 'Admin'|| this.user_role =='Manager'){
         this.userService.getUsers().subscribe((res:any) =>{
           this.users=res.data;
           console.log(res.data);
+          console.log(this.users);
         });
     }else{
         let userId = sessionStorage.getItem('user_id');
