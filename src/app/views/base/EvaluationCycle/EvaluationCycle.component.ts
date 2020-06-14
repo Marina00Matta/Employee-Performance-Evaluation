@@ -44,9 +44,9 @@ export class EvaluationCycleComponent implements OnInit{
     let date = this.datePipe.transform(new Date(this.editableObj.start), 'yyyy-MM-dd');
     this.editEvaluationCycle = new FormGroup({
       id: new FormControl(this.editableObj.id),
-      start: new FormControl(date,[Validators.required]),
+      start: new FormControl(date),
       end: new FormControl(this.editableObj.end),
-      cycle: new FormControl(this.editableObj.cycle,[Validators.required, Validators.pattern("^[0-9]*$")]),
+      cycle: new FormControl(this.editableObj.cycle),
       is_current: new FormControl(this.editableObj.is_current)
     });
   }
@@ -80,8 +80,7 @@ export class EvaluationCycleComponent implements OnInit{
   }
 
   edit(value) {
-    if(this.newEvaluationCycle.valid)
-    {
+   
     console.log("value",value)
     console.log("id",this.editableObj.id)
     this.evaluationCycleService.editEvaluationCycle(value,this.editableObj.id)
@@ -98,8 +97,7 @@ export class EvaluationCycleComponent implements OnInit{
           this.initEditForm();
         }
       });
-    }else{
-      this.alert.fireAlert("error","Please Complete all data in form","");}
+    
   }
 
   delete(id){

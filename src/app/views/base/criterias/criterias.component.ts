@@ -55,8 +55,8 @@ export class CriteriasComponent implements OnInit {
   initEditForm(){
     this.editCriteria = new FormGroup({
       id:new FormControl(this.editableCriteriaObj.id),
-      name:new FormControl(this.editableCriteriaObj.name,[Validators.required,Validators.minLength(3)]),
-      type_id:new FormControl(this.editableCriteriaObj.type_id,[Validators.required])
+      name:new FormControl(this.editableCriteriaObj.name),
+      type_id:new FormControl(this.editableCriteriaObj.type_id)
     });
   }
 
@@ -74,8 +74,7 @@ export class CriteriasComponent implements OnInit {
 
   
   edit(value) {
-    if(this.editCriteria.valid)
-    {
+    
     console.log("value",value)
     this._criteriasService.editCriteria(value,this.editableCriteriaObj.id)
       .subscribe(result => {
@@ -91,10 +90,7 @@ export class CriteriasComponent implements OnInit {
           //this.initEditForm();
         }
       });
-    }
-    else{
-      this.alert.fireAlert("error","Please Complete all data in form","");
-    }
+  
   }
       get name(){return this.editCriteria.get('name');}
 
