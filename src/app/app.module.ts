@@ -43,7 +43,6 @@ import {
 
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
-// import { CriteriasService } from './criterias/criterias.service';
 import { CookieService } from 'ngx-cookie-service';
 
 // Import 3rd party components
@@ -78,7 +77,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    // CriteriasComponent
   ],
   providers: [
       CookieService ,

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class DefaultLayoutComponent {
   public role = sessionStorage.getItem("user_role")
   public sidebarMinimized = false;
-  public navItems = (this.role === 'superadmin' || this.role === 'admin') ? navItems : navUserItems;
+  public navItems = (this.role === 'superadmin' || this.role === 'Admin') ? navItems : navUserItems;
   constructor(private route:Router){}
   toggleMinimize(e) {
     this.sidebarMinimized = e;
