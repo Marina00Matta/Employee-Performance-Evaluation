@@ -4,6 +4,7 @@ import { ActivatedRoute , Router} from '@angular/router';
 import { EvaluationService } from '../../../services/evaluation.service';
 import { CriteriasService } from '../../../services/criterias.service';
 import { UsersService } from '../../../services/users.service';
+import { FireAlertService } from 'src/app/services/fire-alert.service';
 
 @Component({
   selector: 'app-evaluation-form',
@@ -19,7 +20,7 @@ export class EvaluationFormComponent implements OnInit {
               private route:ActivatedRoute ,
               private router:Router ,
               private evaluationService:EvaluationService,
-              private _userservice:UsersService) {}
+              private _userservice:UsersService,private alert:FireAlertService) {}
 
   ngOnInit(): void {
     // this.route.params.subscribe(params =>{
@@ -53,13 +54,18 @@ export class EvaluationFormComponent implements OnInit {
           user_id : this.user_id ,
           criteria_id : key ,
           value : form.value[key],
+          evaluator_id : sessionStorage.getItem("user_id"),
         } ;
         this.evaluationService.storingEvaluationValue(eva).subscribe((res: any) =>{
           console.log(res);
+          if(!res["error_message"]){
+            this.alert.fireAlert("success","Data inserted successfully","");}
+            else{
+              this.alert.fireAlert("error",res["error_message"],"");}
         });
       }
     }
      form.reset;
      this.router.navigate(['/buttons/evaluation'])
-  }
-}
+    }
+    }

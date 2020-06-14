@@ -34,7 +34,7 @@ export class EvaluationComponent implements OnInit {
         }
       }
   });
-      console.log(this.users);
+  console.log(this.users);
     
 } 
 

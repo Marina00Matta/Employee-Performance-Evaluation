@@ -23,7 +23,7 @@
             <div class="col-md-9">  
               <select id="criteria" ngModel name="criteria_id" class="form-control" 
               #criteriaIdRef="ngModel" required>
-                <option *ngFor="let criteria of criterias" value={{criteria.id}}>{{criteria.name}}</option>
+                <option *ngFor="let criteria of criterias" value={{criteria.id}}>{{criteria?.name}}</option>
               </select>
               <div *ngIf="criteriaIdRef.touched && criteriaIdRef.invalid" class="alert alert-danger" >
                 Criteria is required
