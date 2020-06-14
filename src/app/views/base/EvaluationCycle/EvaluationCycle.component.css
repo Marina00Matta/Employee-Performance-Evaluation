@@ -1,0 +1,3 @@
+.test td.dataTables_empty {
+    display: none !important;
+}
