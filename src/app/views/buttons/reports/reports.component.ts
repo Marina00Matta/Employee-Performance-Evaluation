@@ -8,16 +8,21 @@ import {  Router} from '@angular/router';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
-  users;
+  users=[];
   cycles;
   user_role=sessionStorage.getItem('user_role');
   constructor(private userService:UsersService , private router:Router , private evaluationCycle:EvaluationCycleService) { }
   ngOnInit(): void {
 
-    if(this.user_role == 'superadmin' || this.user_role == 'Admin'){
+    if(this.user_role == 'superadmin' || this.user_role == 'Admin' || this.user_role == 'Manager'){
         this.userService.getUsers().subscribe((res:any) =>{
-          this.users=res.data;
-          console.log(res.data);
+           res.data.forEach(element => {
+             if(element.role !== 'Admin' && element.role !=='Manager'){
+               this.users.push(element);
+             }
+           });     
+           console.log(this.users);
+             
         });
     }else{
         let userId = sessionStorage.getItem('user_id');

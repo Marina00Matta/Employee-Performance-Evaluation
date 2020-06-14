@@ -23,7 +23,7 @@ export class EvaluationComponent implements OnInit {
           this.users.push(ele);
         }       
       });
-      data[0][0].forEach(ele => {
+      data[0].forEach(ele => {
         this.users.push(ele);
       });
       this.users.push(data[1]);
