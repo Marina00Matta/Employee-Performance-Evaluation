@@ -14,8 +14,8 @@ import { FireAlertService } from 'src/app/services/fire-alert.service';
 export class EvaluationFormComponent implements OnInit {
   criterias;
    role_id:number ;
-  user_id=sessionStorage.getItem('user_id');
-
+  user_id:number;
+  evaluator_id= sessionStorage.getItem("user_id");
   constructor(private criteriaService: CriteriasService,
               private route:ActivatedRoute ,
               private router:Router ,
@@ -23,9 +23,9 @@ export class EvaluationFormComponent implements OnInit {
               private _userservice:UsersService,private alert:FireAlertService) {}
 
   ngOnInit(): void {
-    // this.route.params.subscribe(params =>{
-    //   this.user_id = +params['id'];
-    // });
+    this.route.params.subscribe(params =>{
+      this.user_id = +params['id'];
+    });
 
     this.route.params.subscribe(params =>{
       this.role_id = +params['rid'];
@@ -38,7 +38,7 @@ export class EvaluationFormComponent implements OnInit {
 
     // });
 
-    this.criteriaService.getByRole(this.role_id,this.user_id).subscribe(data=>{
+    this.criteriaService.getByRole(this.role_id,this.evaluator_id).subscribe(data=>{
       this.criterias=data;
       console.log(data);
       console.log(this.role_id);
