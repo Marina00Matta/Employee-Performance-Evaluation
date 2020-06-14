@@ -27,7 +27,16 @@ export class EvaluationCycleComponent implements OnInit{
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      processing: true
+      processing: true,
+      searching : false,
+      paging :   false,
+      ordering : false,
+      info:     false,
+      language : {
+        emptyTable: " ", // 
+        loadingRecords: " ", // default Loading...
+        zeroRecords: " "
+    }
     };
     this.initForm();
   }
