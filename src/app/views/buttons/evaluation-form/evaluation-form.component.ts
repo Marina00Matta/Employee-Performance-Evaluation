@@ -14,9 +14,8 @@ import { FireAlertService } from 'src/app/services/fire-alert.service';
 export class EvaluationFormComponent implements OnInit {
   criterias;
    role_id:number ;
-  evaluator_id=sessionStorage.getItem('user_id');
-  user_id;
-
+  user_id:number;
+  evaluator_id= sessionStorage.getItem("user_id");
   constructor(private criteriaService: CriteriasService,
               private route:ActivatedRoute ,
               private router:Router ,
