@@ -24,8 +24,8 @@
             </thead>
             <tbody>
              <tr *ngFor="let group of evaluationCycleList">
-                   <td>{{group.start}}</td>
-                   <td>{{group.end}}</td>
+                   <td>{{group.start|date:'MM/dd/yyyy'}}</td>
+                   <td>{{group.end|date:'MM/dd/yyyy'}}</td>
                    <td>{{group.is_current}}</td>
                    <td>{{group.cycle}}</td>
                    <td style="width:20%;">  

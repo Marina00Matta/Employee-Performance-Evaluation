@@ -15,7 +15,7 @@ export const navItems: INavData[] = [
     name: 'Components'
   },
   {
-    name: 'Base',
+    name: 'Admin',
     url: '/base',
     icon: 'icon-puzzle',
     children: [
@@ -42,7 +42,7 @@ export const navItems: INavData[] = [
     ]
   },
   {
-    name: 'Buttons',
+    name: 'Users ',
     url: '/buttons',
     icon: 'icon-cursor',
     children: [

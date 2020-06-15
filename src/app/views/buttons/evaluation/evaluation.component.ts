@@ -26,11 +26,13 @@ export class EvaluationComponent implements OnInit {
       data[0].forEach(ele => {
         this.users.push(ele);
       });
-      this.users.push(data[1]);
+      this.users.push(data[1]);  
     }
     else{
       for (let ele in data) {
+         if ( data[ele].id != this.userId) {
           this.users.push(data[ele]);
+        }
         }
       }
   });
