@@ -1,5 +1,6 @@
 import {AfterViewChecked, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {CollapseDirective} from 'ngx-bootstrap/collapse';
+import {  Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbars',
@@ -28,6 +29,7 @@ export class NavbarsComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private renderer: Renderer2,
+    private route:Router,
   ) { }
 
   ngOnInit() {}

@@ -14,6 +14,7 @@ export class ReportsComponent implements OnInit {
   constructor(private userService:UsersService , private router:Router , private evaluationCycle:EvaluationCycleService) { }
   ngOnInit(): void {
 
+
     if(this.user_role == 'superadmin' || this.user_role == 'Admin' || this.user_role == 'Manager'){
         this.userService.getUsers().subscribe((res:any) =>{
            res.data.forEach(element => {

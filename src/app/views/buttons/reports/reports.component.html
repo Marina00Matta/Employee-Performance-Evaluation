@@ -17,6 +17,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
+
                 <ng-template [ngIf]="user.name !=='Superadmin'">
                 <td><label>{{user.name}}</label></td>
             <td>

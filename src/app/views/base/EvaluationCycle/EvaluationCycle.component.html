@@ -24,8 +24,8 @@
             </thead>
             <tbody>
              <tr *ngFor="let group of evaluationCycleList">
-                   <td>{{group.start|date:'MM/dd/yyyy'}}</td>
-                   <td>{{group.end|date:'MM/dd/yyyy'}}</td>
+                   <td>{{group.start  | date: 'yyyy-MM-dd'}}</td>
+                   <td>{{group.end  | date: 'yyyy-MM-dd'}}</td>
                    <td>{{group.is_current}}</td>
                    <td>{{group.cycle}}</td>
                    <td style="width:20%;">  
@@ -52,7 +52,8 @@
     <div class="modal-body">
       <form class="text-left" [formGroup]="newEvaluationCycle" (ngSubmit)="save(newEvaluationCycle.value)">
         <p class="my-2">Start Date</p>
-        <input class="form-control" id="date-input" type="date" formControlName="start" placeholder="date">
+        <input class="form-control" id="date-input" type="date" formControlName="start" placeholder="date"
+            min="{{myDate | date: 'yyyy-MM-dd'}}" >
         <small class="danger" *ngIf="!start.valid && (start.dirty || start.touched) && start.errors.required" style="color: red;font-size: 14px;">
           Must enter start date
         </small>
@@ -66,7 +67,7 @@
         <small class="danger" *ngIf="!cycle.valid && (cycle.dirty || cycle.touched) && cycle.errors.required" style="color: red;font-size: 14px;">
           Must enter cycle
         </small>
-        <p *ngIf="cycle.errors.pattern" class="text-danger">Number Only</p>
+        <p *ngIf="!cycle.valid && (cycle.dirty || cycle.touched) && cycle.errors.invalidNumber" class="text-danger">Number Only</p>
         <div class="modal-footer border-0">
           <button type="submit" class="btn btn-primary ml-3">Save</button>
           <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
@@ -82,7 +83,8 @@
       <div class="modal-body">
         <form class="text-left" [formGroup]="editEvaluationCycle" (ngSubmit)="edit(editEvaluationCycle.value)">
           <p class="my-2">Start Date</p>
-          <input class="form-control" id="date-input" type="date" formControlName="start" placeholder="date">
+          <input class="form-control" id="date-input" type="date" formControlName="start" placeholder="date"
+          min="{{myDate | date: 'yyyy-MM-dd'}}">
           <small class="danger" *ngIf="!startedit.valid && (startedit.dirty || startedit.touched) && startedit.errors.required" style="color: red;font-size: 14px;">
             Must enter start date
           </small>
@@ -96,7 +98,7 @@
           <small class="danger" *ngIf="!cycleedit.valid && (cycleedit.dirty || cycleedit.touched) && cycleedit.errors.required" style="color: red;font-size: 14px;">
             Must enter cycle
           </small>
-          <p *ngIf="cycleedit.errors.pattern" class="text-danger">Number Only</p>
+          <p *ngIf="!cycle.valid && (cycle.dirty || cycle.touched) && cycle.errors.invalidNumber" class="text-danger">Number Only</p>
           <div class="modal-footer border-0">
             <button type="submit" class="btn btn-primary ml-3">Save</button>
             <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
