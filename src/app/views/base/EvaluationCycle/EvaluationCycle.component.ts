@@ -5,6 +5,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FireAlertService } from 'src/app/services/fire-alert.service';
 import {EvaluationCycle} from 'src/app/interfaces/EvaluationCycle';
 import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
+import { CustomValidator } from '../../../validators/CustomValidator';
 
 @Component({
     selector: 'app-EvaluationCycle',
@@ -19,8 +21,17 @@ export class EvaluationCycleComponent implements OnInit{
   editableObj : EvaluationCycle;
   title = 'angulardatatables';
   dtOptions: DataTables.Settings = {};
+  now = new Date();
+  year = this.now.getFullYear();
+  month = this.now.getMonth();
+  day = this.now.getDay();
+  minDate = moment(new Date()).format('YYYY-MM-DD');
+  //maxDate= moment(new Date()).format('YYYY-MM-DD');
+  myDate;
   constructor(private evaluationCycleService: EvaluationCycleService,private modalService: BsModalService,
-    private alert:FireAlertService,private datePipe: DatePipe) { }
+    private alert:FireAlertService,private datePipe: DatePipe) { 
+      this.myDate = new Date();
+    }
 
   ngOnInit(): void {
     this.getEvaluationCycleList();
@@ -43,9 +54,10 @@ export class EvaluationCycleComponent implements OnInit{
 
   initForm(){
     this.newEvaluationCycle = new FormGroup({
-      start: new FormControl('',[Validators.required]),
+      start: new FormControl(this.minDate,[Validators.required]),
+        //Validators.min(moment(new Date()).millisecond()),Validators.max(moment(new Date()).millisecond())]),
       end: new FormControl(''),
-      cycle: new FormControl('',[Validators.required, Validators.pattern("^[0-9]*$")])
+      cycle: new FormControl('',[Validators.required, CustomValidator.numeric])
     });
   }
 
