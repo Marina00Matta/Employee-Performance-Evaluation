@@ -12,18 +12,16 @@
               <div *ngFor="let criteria of criterias">
                 <div class="card-body">
                     <div class="row">
-                            {{criteria.name}}:  {{criteria.value}}
+                            {{criteria?.name}}:  {{criteria?.value}}
                     </div>
                   </div> 
               </div>
        </div>              
-     
-           
       </div>
     </div>
     </div>
     <div class="row" *ngIf= "user_role == 'superadmin' || user_role == 'Admin'">
-      <div class="col-md-4 text-right" >
+      <div class="col-md-4 offset-4" >
         <button class="btn btn-success btn-block" (click)="openPDF()">Open PDF</button>
      </div>
     </div>

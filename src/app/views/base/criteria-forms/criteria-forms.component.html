@@ -27,7 +27,7 @@
             <div class="col-md-9">  
               <select id="criteriaType" ngModel name="type_id" class="form-control" 
               #typeIdRef="ngModel" required>
-                <option *ngFor="let type of types" value={{type.id}}>{{type.type}}</option>
+                <option *ngFor="let type of types" value={{type.id}}>{{type?.type}}</option>
               </select>
               <div *ngIf="typeIdRef.touched && typeIdRef.invalid" class="alert alert-danger" >
                 Type is required
@@ -39,7 +39,7 @@
           <label class="col-md-3 col-form-label" for="roles">Role</label>
            <div class="col-md-9" >
             <select id="roles" ngModel name="role" class="form-control" #roleRef="ngModel" required multiple size="8">
-              <option *ngFor="let role of positions" value={{role.id}}>{{role.name}}</option>
+              <option *ngFor="let role of positions" value={{role.id}}>{{role?.name}}</option>
             </select>
             <div *ngIf="roleRef.touched && roleRef.invalid" class="alert alert-danger" >
               role/s  required

@@ -19,13 +19,13 @@
               <tr *ngFor="let user of users">
 
                 <ng-template [ngIf]="user.name !=='Superadmin'">
-                <td><label>{{user.name}}</label></td>
+                <td><label>{{user?.name}}</label></td>
             <td>
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label" for="cycle">Cycles</label>
                     <div class="col-md-9">  
                       <select  name="cycle_id" class="form-control" required #cycle>
-                        <option *ngFor="let cycle of cycles" value={{cycle.id}}>{{cycle.start|date:'MM/dd/yyyy'}}_{{cycle.end|date:'MM/dd/yyyy'}}</option>
+                        <option *ngFor="let cycle of cycles" value={{cycle.id}}>{{cycle?.start|date:'MM/dd/yyyy'}}_{{cycle?.end|date:'MM/dd/yyyy'}}</option>
                       </select>
                     </div>
                 </div>

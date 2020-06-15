@@ -21,11 +21,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let indicator of indicators" >
-                <td>{{indicator.name}}</td>
+                <td>{{indicator?.name}}</td>
                 <td>
                   <div *ngFor="let criteria of criterias">
                     <div *ngIf= "criteria.id == indicator.criteria_id">
-                      {{criteria.name}}
+                      {{criteria?.name}}
                     </div>
                   </div>
                 </td>
@@ -59,11 +59,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let trash of trashIndicators" >
-                <td>{{trash.name}}</td>
+                <td>{{trash?.name}}</td>
                 <td>
                   <div *ngFor="let criteria of criterias">
                     <div *ngIf= "criteria.id == trash.criteria_id">
-                      {{criteria.name}}
+                      {{criteria?.name}}
                     </div>
                   </div>
                 </td>

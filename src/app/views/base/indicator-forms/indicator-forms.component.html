@@ -1,7 +1,7 @@
 <div class="col-md-10">
     <div class="card">
       <div class="card-header">
-        <strong>Indicator Form</strong> Form
+        <strong>Indicator Form</strong>
       </div>
       <div class="card-body">
         <form #newIndicatorForm = "ngForm"  (ngSubmit)="onSubmit(newIndicatorForm)" class="form-horizontal">
@@ -13,9 +13,9 @@
                <div *ngIf="nameRef.touched && nameRef.invalid" class="alert alert-danger" >
                  Name is required
                </div>
-               <!-- <div *ngIf="nameRef.errors.minlength" class="alert alert-danger" >
+               <div *ngIf="nameRef.errors.minlength" class="alert alert-danger" >
                 Name must be at least 3
-              </div> -->
+              </div>
             </div>
           </div>
           <div class="form-group row">
@@ -26,7 +26,7 @@
                 <option *ngFor="let criteria of criterias" value={{criteria.id}}>{{criteria?.name}}</option>
               </select>
               <div *ngIf="criteriaIdRef.touched && criteriaIdRef.invalid" class="alert alert-danger" >
-                Criteria is required
+                Criteria  is required
               </div>
         
             </div>

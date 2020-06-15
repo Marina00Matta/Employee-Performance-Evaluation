@@ -8,7 +8,10 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="Position">Position Name</label>
             <div class="col-md-9">
-              <input type="text" ngModel id="Position" name="name" class="form-control" placeholder="Enter the position here ...." required>
+              <input type="text" ngModel id="Position" name="name" class="form-control" #nameRef="ngModel" placeholder="Enter the position here ...." required>
+            </div>
+            <div *ngIf="nameRef.touched && nameRef.invalid" class="alert alert-danger" >
+              Name is required
             </div>
           </div>
           <button type="submit" class="btn btn-md btn-info" [disabled]="newPositionForm.invalid"><i class="fa fa-dot-circle-o"></i> Submit</button>
