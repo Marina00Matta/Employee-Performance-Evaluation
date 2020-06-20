@@ -21,10 +21,10 @@ export class RoleFormComponent implements OnInit {
   addPosition(form: NgForm){
     console.log(form.value);
     if(form.valid)
-    // {this._rolesService.addRole(form.value).subscribe((res :any) =>{
-    //   console.log(res);
-    // });
-    // }
+    {this._rolesService.addRole(form.value).subscribe((res :any) =>{
+      console.log(res);
+    });
+    }
     form.reset;
   }
 
