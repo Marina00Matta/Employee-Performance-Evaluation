@@ -20,6 +20,7 @@ export class DefaultLayoutComponent {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('XSRF-TOKEN');
     sessionStorage.removeItem('user_role');
+    sessionStorage.removeItem('user_id');
     this.route.navigate(['/login']);
   }
 }

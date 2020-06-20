@@ -9,19 +9,22 @@ import { RolesService } from '../../../services/roles.service';
   styleUrls: ['./role-form.component.css']
 })
 export class RoleFormComponent implements OnInit {
-
+  roles;
   constructor(private _rolesService: RolesService,) { }
 
   ngOnInit(): void {
+    this._rolesService.getRoles().subscribe(data =>
+      {this.roles =data;
+      });
   }
 
   addPosition(form: NgForm){
     console.log(form.value);
     if(form.valid)
-    {this._rolesService.addRole(form.value).subscribe((res :any) =>{
-      console.log(res);
-    });
-    }
+    // {this._rolesService.addRole(form.value).subscribe((res :any) =>{
+    //   console.log(res);
+    // });
+    // }
     form.reset;
   }
 
