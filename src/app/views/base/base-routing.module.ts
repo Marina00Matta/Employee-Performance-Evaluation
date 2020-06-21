@@ -13,7 +13,7 @@ import { UserEditFormComponent } from './user-edit-form/user-edit-form.component
 import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.component';
 import { TrashedCriteriasComponent } from './trashed-criterias/trashed-criterias.component';
 import { TrashUsersComponent } from './trash-users/trash-users.component';
-
+import { GroupsComponent } from './groups/groups.component';
 
 const routes: Routes = [
   {
@@ -66,6 +66,13 @@ const routes: Routes = [
         component: UsersComponent,
         data: {
           title: 'Users'
+        }
+      },
+      {
+        path: 'groups',
+        component: GroupsComponent,
+        data: {
+          title: 'Group'
         }
       },
       {
