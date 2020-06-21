@@ -61,6 +61,19 @@
             </select>
           </div>
       </div>
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="roles">Group</label>
+         <div class="col-md-9" >
+          <select id="roles" ngModel name="group_id" class="form-control" #grpRef="ngModel" required multiple size="2">
+            <option *ngFor="let grp of grps" value={{grp.id}}>{{grp?.name}}</option>
+          </select>
+          <div *ngIf="grpRef.touched && grpRef.invalid" class="alert alert-danger" >
+            Group/s  required
+          </div>
+        </div>
+    </div>
+
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="file-input">Avatar input</label>
           <div class="col-md-9">
