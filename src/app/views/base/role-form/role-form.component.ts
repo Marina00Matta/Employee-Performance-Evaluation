@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RolesService } from '../../../services/roles.service';
+import { ActivatedRoute , Router} from '@angular/router';
+
 
 
 @Component({
@@ -10,7 +12,9 @@ import { RolesService } from '../../../services/roles.service';
 })
 export class RoleFormComponent implements OnInit {
   roles;
-  constructor(private _rolesService: RolesService,) { }
+  constructor(private _rolesService: RolesService,
+    private route:ActivatedRoute ,
+    private router:Router) { }
 
   ngOnInit(): void {
     this._rolesService.getRoles().subscribe(data =>
@@ -26,6 +30,8 @@ export class RoleFormComponent implements OnInit {
     });
     }
     form.reset;
+    this.router.navigate(['/base/positions']);
+    
   }
 
 }

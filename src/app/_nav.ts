@@ -38,6 +38,11 @@ export const navItems: INavData[] = [
         name: 'Evaluation Cycle',
         url: '/base/EvaluationCycle',
         icon: 'icon-puzzle'
+      },
+      {
+        name: 'positions',
+        url: '/base/positions',
+        icon: 'icon-puzzle'
       }
     ]
   },
