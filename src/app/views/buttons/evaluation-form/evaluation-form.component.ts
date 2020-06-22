@@ -28,33 +28,28 @@ export class EvaluationFormComponent implements OnInit {
       this.user_id = +params['id'];
     });
 
-    this.route.params.subscribe(params =>{
-      this.role_id = +params['rid'];
-    });
 
-    // this._userservice.getUserById(this.user_id).subscribe(data=>{
-    //   console.log('employee',data['role']);
-    //   this.role_id = data['role'];
-    //   console.log(this.role_id);
-
+    // this.route.params.subscribe(params =>{
+    //   this.role_id = +params['rid'];
     // });
 
-    this.criteriaService.getByRole(this.role_id,this.evaluator_id).subscribe(data=>{
-      if(this.role_id == 4 || this.role_id == 7){
-        for (let ele in data){
-          if (data[ele].type_id == 3){
-            this.criterias = [];
-            this.criterias.push(data[ele]);
-          }
-          else{
-            this.criterias = data;
-          }
-        }
-      }else{
-      this.criterias=data;}
+    this.criteriaService.getByRole(this.evaluator_id,this.user_id).subscribe(data=>{
+    
+      console.log(this.user_id  , this.evaluator_id);
+
+      // if(this.role_id == 4 || this.role_id == 7){
+      //   for (let ele in data){
+      //     if (data[ele].type_id == 3){
+      //       this.criterias = [];
+      //       this.criterias.push(data[ele]);
+      //     }
+      //     else{
+      //       this.criterias = data;
+      //     }
+      //   }
+      // }else{
+      this.criterias=data;
       console.log(data);
-      // console.log(this.role_id);
-      
     });
   }
 
@@ -70,13 +65,12 @@ export class EvaluationFormComponent implements OnInit {
         } ;
         this.evaluationService.storingEvaluationValue(eva).subscribe((res: any) =>{
           console.log(res);
-          // setTimeout(()=>{  
+         
           if(!res["error_message"]){
             this.alert.fireAlert("success","Data inserted successfully","");}
             else{
               this.alert.fireAlert("error",res["error_message"],"");}
-            
-            // }, 1000)
+
         });
        
       }

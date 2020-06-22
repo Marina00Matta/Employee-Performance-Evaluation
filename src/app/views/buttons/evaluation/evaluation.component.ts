@@ -11,29 +11,20 @@ import {  Router} from '@angular/router';
 export class EvaluationComponent implements OnInit {
  users = [];
  role = sessionStorage.getItem('user_role');
- userId = sessionStorage.getItem('user_id');
+ EvaluatorId = sessionStorage.getItem('user_id');
   constructor(private _userservice:UsersService, private router:Router) { }
 
   ngOnInit(): void {
     this._userservice.getUserByRole(this.role).subscribe(data =>{
       for (let ele in data) {
-         if ( data[ele].id != this.userId) {
+         if ( data[ele].id != this.EvaluatorId) {
           this.users.push(data[ele]);
         }
         }
   });
-  console.log(this.users);
-    
 } 
 
-  onClick(id){
-    this._userservice.getUserById(id).subscribe(data=>{
-      console.log('user',data['role']);
-      let role_id = data['role'];
-      console.log(role_id);
-      this.router.navigate(['buttons/evaluate-form',role_id,id]);
-
-    });
-
+  onClick(uid){
+      this.router.navigate(['buttons/evaluate-form',uid]);
   }
 }

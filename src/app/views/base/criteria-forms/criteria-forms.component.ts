@@ -5,6 +5,7 @@ import { CriteriasService } from '../../../services/criterias.service';
 import { FireAlertService } from 'src/app/services/fire-alert.service';
 import { from } from 'rxjs';
 import { RolesService } from '../../../services/roles.service';
+import { GroupService } from '../../../services/group.service';
 
 @Component({
   selector: 'app-criteria-forms',
@@ -14,15 +15,21 @@ import { RolesService } from '../../../services/roles.service';
 export class CriteriaFormsComponent implements OnInit {
   types;
   positions;
+  groups;
   constructor(private _criteriasService: CriteriasService,
     private route:ActivatedRoute ,
     private router:Router ,private alert:FireAlertService , 
-    private roleservice:RolesService) { }
+    private roleservice:RolesService ,
+    private _grpService:GroupService) { }
 
   ngOnInit(): void {
     this._criteriasService.getCriteriaTypes().subscribe(dataType =>{      
       this.types = dataType;
     });
+
+    this._grpService.getGroups().subscribe(data =>{
+      this.groups = data ;
+    })
 
     this.roleservice.getRoles().subscribe(roles => {
       this.positions=roles ;

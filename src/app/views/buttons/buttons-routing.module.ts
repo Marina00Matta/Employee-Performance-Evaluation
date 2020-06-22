@@ -39,7 +39,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'evaluate-form/:rid/:id',
+        path: 'evaluate-form/:id',
         component: EvaluationFormComponent,
         data: {
           title: 'evaluate'

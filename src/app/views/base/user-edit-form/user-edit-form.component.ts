@@ -4,6 +4,8 @@ import { UsersService } from '../../../services/users.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute , Router} from '@angular/router';
 import { RolesService } from '../../../services/roles.service';
+import { GroupService } from '../../../services/group.service';
+
 
 
 
@@ -17,6 +19,7 @@ export class UserEditFormComponent implements OnInit {
   users;
   id:number;
   roles;
+  grps;
   
   filedata:any;
     fileEvent(e){      
@@ -26,7 +29,8 @@ export class UserEditFormComponent implements OnInit {
   constructor(private _userservice:UsersService,
               private route:ActivatedRoute ,
               private _rolesService: RolesService,
-              private router:Router ) { }
+              private router:Router,
+              private _grpService:GroupService ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params =>{
@@ -45,6 +49,9 @@ export class UserEditFormComponent implements OnInit {
     this._rolesService.getRoles().subscribe(roleData =>{
       this.roles=roleData;
     });
+    this._grpService.getGroups().subscribe(data =>{
+      this.grps = data ;
+    })
 
   }
   

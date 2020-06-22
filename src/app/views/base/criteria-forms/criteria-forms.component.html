@@ -38,7 +38,7 @@
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="roles">Role</label>
            <div class="col-md-9" >
-            <select id="roles" ngModel name="role" class="form-control" #roleRef="ngModel" required multiple size="8">
+            <select id="roles" ngModel name="role" class="form-control" #roleRef="ngModel"  multiple size="3">
               <option *ngFor="let role of positions" value={{role.id}}>{{role?.name}}</option>
             </select>
             <div *ngIf="roleRef.touched && roleRef.invalid" class="alert alert-danger" >
@@ -46,6 +46,18 @@
             </div>
           </div>
       </div>
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="roles">Group</label>
+         <div class="col-md-9" >
+          <select id="roles" ngModel name="group_id" class="form-control" #grpRef="ngModel" required multiple size="2">
+            <option *ngFor="let grp of groups" value={{grp.id}}>{{grp?.name}}</option>
+          </select>
+          <div *ngIf="grpRef.touched && grpRef.invalid" class="alert alert-danger" >
+            group/s  required
+          </div>
+        </div>
+    </div>
           <button type="submit" class="btn btn-md btn-primary" [disabled]="newCriteriaForm.invalid"><i class="fa fa-dot-circle-o"></i> Submit</button>
         </form>
 
