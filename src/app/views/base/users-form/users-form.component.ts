@@ -45,11 +45,7 @@ export class UsersFormComponent implements OnInit {
         
         Object.entries(form.value).map(value =>{
           myFormData.append(`${value[0]}`,`${value[1]}`);
-          console.log(value[0], value[1] , typeof(value[1]));
-          
         })
-        // console.log(myFormData);
-        
       // this._userservice.addUser(myFormData).subscribe((res: any) => {
       //   console.log(res);
       //   this.is_added=true;

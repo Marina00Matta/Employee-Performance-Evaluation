@@ -50,13 +50,7 @@ export class UserEditFormComponent implements OnInit {
   
   editUser(form: NgForm){
     if(form.valid){
-      // let myFormData= new FormData();
       console.log(form.value);
-     
-       
-      //  Object.entries(form.value).map(value =>{
-      //    myFormData.append(`${value[0]}`,`${value[1]}`);
-      //  })
        this._userservice.editUser(this.id,form.value).subscribe((res: any)=>{
         console.log(res);
        }
