@@ -42,20 +42,17 @@ export class UsersFormComponent implements OnInit {
     if(form.valid){
        let myFormData= new FormData();
         myFormData.append('avatar',this.filedata,this.filedata.name)
-        
         Object.entries(form.value).map(value =>{
           myFormData.append(`${value[0]}`,`${value[1]}`);
-          console.log(value[0], value[1] , typeof(value[1]));
+          console.log(value[0],typeof(value[1]));
           
-        })
-        // console.log(myFormData);
-        
-      // this._userservice.addUser(myFormData).subscribe((res: any) => {
-      //   console.log(res);
-      //   this.is_added=true;
-      //   form.reset;
-      //   this.route.navigate(['/base/Users']);
-      // })
+        });        
+      this._userservice.addUser(myFormData).subscribe((res: any) => {
+        // console.log(res);
+        this.is_added=true;
+        form.reset;
+        this.route.navigate(['/base/Users']);
+      });
     }
   }
 }
