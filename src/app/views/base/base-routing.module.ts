@@ -14,6 +14,7 @@ import { EvaluationCycleComponent } from './EvaluationCycle/EvaluationCycle.comp
 import { TrashedCriteriasComponent } from './trashed-criterias/trashed-criterias.component';
 import { TrashUsersComponent } from './trash-users/trash-users.component';
 import { GroupsComponent } from './groups/groups.component';
+import {  EditPositionFormComponent } from './edit-position-form/edit-position-form.component'
 
 const routes: Routes = [
   {
@@ -94,6 +95,13 @@ const routes: Routes = [
         component: RoleFormComponent,
         data: {
           title: 'position-forms'
+        }
+      },
+      {
+        path: 'edit-position/:id',
+        component:  EditPositionFormComponent,
+        data: {
+          title: 'edit-position'
         }
       },
       {

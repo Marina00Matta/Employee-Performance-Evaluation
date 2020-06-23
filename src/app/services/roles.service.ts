@@ -21,4 +21,8 @@ export class RolesService {
   addRole(position){
     return this._http.post(this._apiUrl,position)
   }
+
+  editRole(position,id){
+    return this._http.post(`${this._apiUrl}/${id}`,position)
+  }
 }

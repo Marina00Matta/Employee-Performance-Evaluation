@@ -50,6 +50,7 @@ import { TrashedCriteriasComponent } from './trashed-criterias/trashed-criterias
 import { TrashUsersComponent } from './trash-users/trash-users.component';
 import { RolesComponent } from './roles/roles.component';
 import { GroupsComponent } from './groups/groups.component';
+import { EditPositionFormComponent } from './edit-position-form/edit-position-form.component';
 
 
 @NgModule({
@@ -92,6 +93,8 @@ import { GroupsComponent } from './groups/groups.component';
     RolesComponent,
 
     GroupsComponent,
+
+    EditPositionFormComponent,
   ],
   providers: [
     CriteriasService,
