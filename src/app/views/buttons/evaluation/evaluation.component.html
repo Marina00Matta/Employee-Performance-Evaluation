@@ -11,6 +11,7 @@
             <thead>
               <tr>
                 <th>Employee Name</th>
+                <th>Employee Position</th>
                 <th *ngIf= "role !== 'superadmin' && role !== 'Admin'">Actions</th>
               </tr>
             </thead>
@@ -18,6 +19,7 @@
               <tr *ngFor="let user of users">
                 <ng-template [ngIf]="user.name!=='Superadmin'">
                 <td>{{user?.name}}</td>
+                <td>{{user?.role}}</td>
             <td *ngIf= "role !== 'superadmin' && role !== 'Admin'">  
                <div class="btn-group btn-group-md ml-2">
                   <button type="button" class="btn btn-block btn-warning" (click)="onClick(user.id)" >Evaluate</button>
