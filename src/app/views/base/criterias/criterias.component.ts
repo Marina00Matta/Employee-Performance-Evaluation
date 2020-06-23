@@ -6,9 +6,10 @@ import { Criteria } from 'src/app/interfaces/Criteria';
 import { CriteriasService } from '../../../services/criterias.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FireAlertService } from 'src/app/services/fire-alert.service';
-import {EvaluationCycle} from 'src/app/interfaces/EvaluationCycle';
-import { DatePipe } from '@angular/common';
 import { ActivatedRoute , Router} from '@angular/router';
+import { GroupService } from '../../../services/group.service';
+import { RolesService } from '../../../services/roles.service';
+
 
 
 
@@ -20,15 +21,21 @@ export class CriteriasComponent implements OnInit {
   criterias;
   trashCriterias;
   types; 
+  grps;
+  roles;
   editableCriteriaObj : Criteria;
   editCriteria : FormGroup;
   constructor(private _criteriasService: CriteriasService,private modalService: BsModalService,
     private alert:FireAlertService, private route:ActivatedRoute ,
-    private router:Router ,) { }
+    private router:Router ,
+private _grpService:GroupService,
+private _rolesService: RolesService,) { }
 
   ngOnInit(): void {
     this.getCriteriaList();
     this.getCriteriaTypeList();
+    this.getGroups();
+    this.getRoles();
 
   }
   getCriteriaTypeList(){
@@ -36,6 +43,16 @@ export class CriteriasComponent implements OnInit {
       console.log(dataType)
       this.types = dataType;
     })
+  }
+  getGroups(){
+    this._grpService.getGroups().subscribe(data =>{
+      this.grps = data ;
+    })
+  }
+  getRoles(){
+    this._rolesService.getRoles().subscribe(roleData =>{
+      this.roles=roleData;
+    });
   }
 
   deleteFunction(id){
@@ -56,7 +73,9 @@ export class CriteriasComponent implements OnInit {
     this.editCriteria = new FormGroup({
       id:new FormControl(this.editableCriteriaObj.id),
       name:new FormControl(this.editableCriteriaObj.name),
-      type_id:new FormControl(this.editableCriteriaObj.type_id)
+      type_id:new FormControl(this.editableCriteriaObj.type_id),
+      group_id:new FormControl(this.editableCriteriaObj.group_id),
+      roles:new FormControl(this.editableCriteriaObj.roles),
     });
   }
 
