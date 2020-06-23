@@ -4,5 +4,7 @@ export interface Criteria{
     type_id : number,
     deleted_at : string
     asyncValidator: string,
-    validator: string
+    validator: string,
+    group_id: [], 
+    roles:[],
 }

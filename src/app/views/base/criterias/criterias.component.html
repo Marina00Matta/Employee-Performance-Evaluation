@@ -67,6 +67,24 @@
         <select formControlName="type_id" class="form-control">
           <option *ngFor="let type of types" value={{type.id}}>{{type?.type}}</option>
         </select>
+        <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="roles">Group</label>
+        <div class="col-md-9" >
+         <select id="groups" formControlName="group_id" class="form-control"  required multiple size="2">
+           <option *ngFor="let grp of grps" value={{grp.id}}>{{grp?.name}}</option>
+         </select>
+       </div>
+      </div>
+       <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="roles">Position</label>
+         <div class="col-md-9" >
+          <select id="roles" formControlName="roles" class="form-control"   multiple size="3">
+            <option *ngFor="let role of roles" value={{role.id}}>{{role?.name}}</option>
+          </select>
+        </div>
+    </div>
+
+
         <div class="modal-footer border-0">
           <small class="danger" *ngIf="!type_id.valid && (type_id.dirty || type_id.touched) && type_id.errors.required" style="color: red;font-size: 14px;"  class="alert alert-danger">
             Must enter criteria_type
