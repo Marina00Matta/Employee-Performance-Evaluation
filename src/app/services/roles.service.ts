@@ -23,6 +23,6 @@ export class RolesService {
   }
 
   editRole(position,id){
-    return this._http.post(`${this._apiUrl}/${id}`,position)
+    return this._http.put(`${this._apiUrl}/${id}`,position)
   }
 }

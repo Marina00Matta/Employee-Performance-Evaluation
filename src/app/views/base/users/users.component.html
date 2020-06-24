@@ -25,6 +25,7 @@
                 <th>Email</th>
                 <th>Position</th>
                 <th>Hire Date</th>
+                <th>Groups</th>
                 <th>Supervisor</th>
                 <th>Actions</th>
               </tr>
@@ -37,16 +38,17 @@
                 <td>{{user?.email}}</td>
                 <td>{{user?.role}}</td>
                 <td>{{user?.hiring_at | date:'MM/dd/yyyy'}}</td>
-                <td>
-                    <div *ngFor="let sup of users">
-                      <div *ngIf= "sup.id == user.supervisor">
-                        {{sup?.name}}
-                      </div>
-                    </div>
+                <td>                      
+                        {{user?.groups}}
                 </td>
-             
+                <td>
+                  <div *ngFor="let sup of users">
+                    <div *ngIf= "sup.id == user.supervisor">
+                      {{sup?.name}}
+                    </div>
+                  </div>
+              </td>       
                 <td>  
- 
                <div class="btn-group btn-group-md ml-2">
                   <button type="button" class="btn btn-block btn-warning" [routerLink]="['/base/edit_user',user.id]">Edit</button>
                 </div>
