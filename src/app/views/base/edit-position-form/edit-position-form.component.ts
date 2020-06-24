@@ -9,7 +9,7 @@ import { ActivatedRoute , Router} from '@angular/router';
   styleUrls: ['./edit-position-form.component.css']
 })
 export class EditPositionFormComponent implements OnInit {
-  roles;
+  roles=[];
   role_id;
   role;
   constructor(private _rolesService: RolesService,
@@ -20,9 +20,17 @@ export class EditPositionFormComponent implements OnInit {
     this.route.params.subscribe(params =>{
       this.role_id = +params['id'];
       }); 
+
     this._rolesService.getRoles().subscribe(data =>
-      {this.roles =data;
+      { 
+        for (let ele in data) {          
+          if(data[ele].name !== 'superadmin')
+           {
+            this.roles.push(data[ele]);
+           }
+        }        
       });
+
     this._rolesService.getRoleById(this.role_id).subscribe(data=>
       {this.role = data;
       });  

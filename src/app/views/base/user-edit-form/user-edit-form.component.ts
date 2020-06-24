@@ -20,7 +20,7 @@ export class UserEditFormComponent implements OnInit {
   id:number;
   roles;
   grps;
-  
+
   filedata:any;
     fileEvent(e){      
     this.filedata = e.target.files[0];

@@ -22,7 +22,7 @@ export class CriteriasComponent implements OnInit {
   trashCriterias;
   types; 
   grps;
-  roles;
+  roles=[];
   editableCriteriaObj : Criteria;
   editCriteria : FormGroup;
   constructor(private _criteriasService: CriteriasService,private modalService: BsModalService,
@@ -50,9 +50,16 @@ private _rolesService: RolesService,) { }
     })
   }
   getRoles(){
-    this._rolesService.getRoles().subscribe(roleData =>{
-      this.roles=roleData;
-    });
+    this._rolesService.getRoles().subscribe(data =>
+      { 
+        for (let ele in data) {          
+          if(data[ele].name !== 'superadmin')
+           {
+            this.roles.push(data[ele]);
+           }
+        }        
+      });
+   
   }
 
   deleteFunction(id){
