@@ -28,8 +28,8 @@ export class UsersService {
     return this._http.put(`${this._apiUrl}/${id}`,user)
   }
 
-  getUserByRole(role){
-    return this._http.get(`${this._apiUrl}s/${role}`)
+  getUserByRole(role,uid){
+    return this._http.get(`${this._apiUrl}s/${role}/${uid}`)
   }
   getTrash(){
     return this._http.get(`${this._apiUrl}s/trash`)

@@ -9,19 +9,21 @@ import {  Router} from '@angular/router';
   styleUrls: ['./evaluation.component.css']
 })
 export class EvaluationComponent implements OnInit {
- users ;
+ users =  ;
  role = sessionStorage.getItem('user_role');
  EvaluatorId = sessionStorage.getItem('user_id');
   constructor(private _userservice:UsersService, private router:Router) { }
 
   ngOnInit(): void {
-    this._userservice.getUserByRole(this.role).subscribe(data =>{
+    this._userservice.getUserByRole(this.role,this.EvaluatorId).subscribe(data =>{
       for (let ele in data) {
-         if ( data[ele].id != this.EvaluatorId) {
-          this.users = [... data[ele]] ;
+        for (let val of data[ele]){
+           console.log('val',val)
+              if ( val.id != this.EvaluatorId) {
+                this.users.push(val);
         }
+        } 
         console.log(this.users);
-        
         }
   });
 } 
