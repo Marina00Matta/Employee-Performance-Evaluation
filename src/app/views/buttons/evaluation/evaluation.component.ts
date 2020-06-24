@@ -15,7 +15,7 @@ export class EvaluationComponent implements OnInit {
   constructor(private _userservice:UsersService, private router:Router) { }
 
   ngOnInit(): void {
-    this._userservice.getUserByRole(this.role).subscribe(data =>{
+    this._userservice.getUserByRole(this.role,this.EvaluatorId).subscribe(data =>{
       for (let ele in data) {
          if ( data[ele].id != this.EvaluatorId) {
           this.users = [... data[ele]] ;
