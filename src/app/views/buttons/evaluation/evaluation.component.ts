@@ -9,7 +9,7 @@ import {  Router} from '@angular/router';
   styleUrls: ['./evaluation.component.css']
 })
 export class EvaluationComponent implements OnInit {
- users =  ;
+ users;
  role = sessionStorage.getItem('user_role');
  EvaluatorId = sessionStorage.getItem('user_id');
   constructor(private _userservice:UsersService, private router:Router) { }
