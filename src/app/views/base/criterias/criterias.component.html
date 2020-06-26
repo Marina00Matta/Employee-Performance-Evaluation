@@ -7,13 +7,16 @@
           <i class="fa fa-align-justify"></i> Criterias
         </div>
         <div class="card-body">
-          <div class="btn-group btn-group-md ml-2">
-            <button type="button" class="btn  btn-success mb-lg-3 mr-3"  [routerLink]="['/base/criteria-forms']">New Criteria</button>
+          <div class="btn-group btn-group-md ml-2" style="float:left;margin-bottom: 5px;">
+            <input type="text"  placeholder="Search..." (keyup)="updateFilter($event)" />
           </div>
-          <div class="btn-group btn-group-md ml-2">
-            <button type="button" class="btn  btn-success mb-lg-3 mr-3"  [routerLink]="['/base/trashed-criterias']">See Trash</button>
+          <div class="btn-group btn-group-md ml-2" style="float: right;">
+            <button type="button" class="btn btn-block btn-primary mb-lg-3 mr-3"  [routerLink]="['/base/criteria-forms']">New Criteria</button>
           </div>
-          <table class="table table-bordered">
+          <div class="btn-group btn-group-md ml-2" style="float: right;">
+            <button type="button" class="btn btn-block btn-primary mb-lg-3 mr-3"  [routerLink]="['/base/trashed-criterias']">See Trash</button>
+          </div>
+         <!-- <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Criteria Name</th>
@@ -46,7 +49,56 @@
         </div>
       </div>
     </div>
+    </div>-->
+
+    <div>
+      <ngx-datatable #myFilterTable class="table table-striped table-bordered table-sm row-border hover test material" [rows]="criterias" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+        [rowHeight]="50"  [sorts]="[{prop: 'name', dir: 'desc'}]" [limit]="4">
+
+        <ngx-datatable-column name="Criteria Name" prop="name">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.name}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Type" prop="type">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.type}}
+          </ng-template>
+        </ngx-datatable-column>
+
+     <ngx-datatable-column> 
+          <ng-template let-row="row" ngx-datatable-cell-template>
+          <div class="btn-group btn-group-md ml-2" style="margin-top: -5px !important;">
+            <button type="button" class="btn btn-block btn-primary" (click)="openEditModal(row,EditScreen)">Edit</button>
+          </div>
+          <div class="btn-group btn-group-md ml-2" style="margin-top: -5px !important;">
+            <button type="button" class="btn btn-block btn-primary" (click)="deleteFunction(row.id)">Delete</button>
+          </div>
+        </ng-template>
+        </ngx-datatable-column>
+
+      </ngx-datatable>
     </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
    <ng-template #EditScreen>
