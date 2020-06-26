@@ -1,4 +1,4 @@
-import { Component, OnInit ,TemplateRef} from '@angular/core';
+import { Component, OnInit ,TemplateRef,ViewChild} from '@angular/core';
 import { EvaluationCycleService } from '../../../services/EvaluationCycle.service';
 import { FormControl, FormGroup ,Validators} from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'; 
@@ -7,6 +7,7 @@ import {EvaluationCycle} from 'src/app/interfaces/EvaluationCycle';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
 import { CustomValidator } from '../../../validators/CustomValidator';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 @Component({
     selector: 'app-EvaluationCycle',
@@ -15,9 +16,13 @@ import { CustomValidator } from '../../../validators/CustomValidator';
   })
 export class EvaluationCycleComponent implements OnInit{
 
+  @ViewChild(DatatableComponent) myFilterTable: DatatableComponent;
+  
+
   newEvaluationCycle : FormGroup;
   editEvaluationCycle : FormGroup;
   evaluationCycleList;
+  temp;
   editableObj : EvaluationCycle;
   title = 'angulardatatables';
   dtOptions: DataTables.Settings = {};
@@ -26,6 +31,8 @@ export class EvaluationCycleComponent implements OnInit{
   month = this.now.getMonth();
   day = this.now.getDay();
   minDate = moment(new Date()).format('YYYY-MM-DD');
+  columns: Array<object>;
+  
   //maxDate= moment(new Date()).format('YYYY-MM-DD');
   myDate;
   constructor(private evaluationCycleService: EvaluationCycleService,private modalService: BsModalService,
@@ -35,20 +42,6 @@ export class EvaluationCycleComponent implements OnInit{
 
   ngOnInit(): void {
     this.getEvaluationCycleList();
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      processing: true,
-      searching : false,
-      paging :   false,
-      ordering : false,
-      info:     false,
-      language : {
-        emptyTable: " ", // 
-        loadingRecords: " ", // default Loading...
-        zeroRecords: " "
-    }
-    };
     this.initForm();
   }
 
@@ -138,6 +131,7 @@ export class EvaluationCycleComponent implements OnInit{
   getEvaluationCycleList(){
       this.evaluationCycleService.getEvaluationCycle().subscribe(data =>{
         console.log(data)
+        this.temp = data;
         this.evaluationCycleList = data;
       })
   }
@@ -158,6 +152,23 @@ export class EvaluationCycleComponent implements OnInit{
     this.editableObj = selected;
     this.initEditForm();
     this.modalEditRef = this.modalService.show(template);
+  }
+
+  updateFilter(event) {
+    const val = event.target.value.toString().toLowerCase().trim();
+    // filter our data
+    const temp = this.temp.filter(function (d) {
+      console.log("d",d)
+      return (d.cycle.toString().toLowerCase().indexOf(val) !== -1 ) ||
+      (d.is_current.toString().toLowerCase().indexOf(val) !== -1 ) ||
+      (d.start.toString().toLowerCase().indexOf(val) !== -1 ) ||
+      (d.end.toString().toLowerCase().indexOf(val) !== -1 ) 
+      || !val;
+    });
+    // update the rows
+    this.evaluationCycleList = temp;
+    // Whenever the filter changes, always go back to the first page
+    this.myFilterTable.offset = 0;
   }
 
   get start(){return this.newEvaluationCycle.get('start');}

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Tabs Component
 import { TabsModule } from 'ngx-bootstrap/tabs';
 // Carousel Component
@@ -58,6 +59,7 @@ import { EditPositionFormComponent } from './edit-position-form/edit-position-fo
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxDatatableModule,
     BaseRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule,
