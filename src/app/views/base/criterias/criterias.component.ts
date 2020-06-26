@@ -100,7 +100,6 @@ private _rolesService: RolesService,) { }
 
   
   edit(value) {
-    
     console.log("value",value)
     this._criteriasService.editCriteria(value,this.editableCriteriaObj.id)
       .subscribe(result => {

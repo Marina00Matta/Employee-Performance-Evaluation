@@ -8,7 +8,7 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="Position">Position Name</label>
             <div class="col-md-9">
-              <input type="text" ngModel id="Position" name="name" [ngModel]="role?.name"  class="form-control" #nameRef="ngModel" placeholder="Enter the position here ...." required>
+              <input type="text" ngModel id="Position" name="name" [ngModel]="role?.name"  class="form-control" #nameRef="ngModel" required>
             </div>
             <div *ngIf="nameRef.touched && nameRef.invalid" class="alert alert-danger" >
               Name is required
@@ -18,12 +18,9 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label" for="roles">Evaluated Postions</label>
              <div class="col-md-9" >
-              <select id="roles" ngModel name="permissions" class="form-control" #roleRef="ngModel"  multiple size="3">
+              <select id="roles" ngModel name="permissions" [(ngModel)]="selected" class="form-control" required multiple size="3">
                 <option *ngFor="let role of roles" value={{role.id}}>{{role?.name}}</option>
               </select>
-              <div *ngIf="roleRef.touched && roleRef.invalid" class="alert alert-danger" >
-                role/s  required
-              </div>
             </div>
         </div>
           <button type="submit" class="btn btn-md btn-info" [disabled]="editPositionForm.invalid"><i class="fa fa-dot-circle-o"></i> Submit</button>

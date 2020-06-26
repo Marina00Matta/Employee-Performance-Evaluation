@@ -12,6 +12,7 @@ export class EditPositionFormComponent implements OnInit {
   roles=[];
   role_id;
   role;
+  selected= [ ];
   constructor(private _rolesService: RolesService,
     private route:ActivatedRoute ,
     private router:Router) { }
@@ -28,16 +29,19 @@ export class EditPositionFormComponent implements OnInit {
            {
             this.roles.push(data[ele]);
            }
-        }        
+        }    
+        console.log(this.roles);
       });
 
     this._rolesService.getRoleById(this.role_id).subscribe(data=>
       {this.role = data;
+        data['permissions'].forEach(ele => {
+          this.selected.push(ele.toString());
+       }); 
       });  
   }
 
   onSubmit(form: NgForm){
-    console.log(form.value);
     if(form.valid)
     {this._rolesService.editRole(form.value, this.role_id).subscribe((res :any) =>{
       console.log(res);
@@ -45,9 +49,5 @@ export class EditPositionFormComponent implements OnInit {
     }
     form.reset;
     this.router.navigate(['/base/positions']);
-    
   }
-
-  
-
 }
