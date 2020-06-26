@@ -27,9 +27,8 @@ export class LoginService {
           let xsrfToken = this.cookieService.get('XSRF-TOKEN');
           console.log('xsrfToken',xsrfToken)
           sessionStorage.setItem('XSRF-TOKEN',xsrfToken) ;
-          this.authenticate(xsrfToken, data);
+          return this.authenticate(xsrfToken, data);
         })
-
         .catch((error) => console.log(error));
     }
 
@@ -47,16 +46,13 @@ export class LoginService {
     
 
     authenticate(xsrfToken, data) {
-      this.http
+      return this.http
         .post('http://localhost:8000/api/sanctum/token', data, {
-          headers: {
-            'X-XSRF-TOKEN': xsrfToken,
-          },
           withCredentials: true,
           responseType: 'json',
         })
         .toPromise()
-        .then((result) => {
+        .then(result => {
           let token = result['token']; 
           console.log(result);
           sessionStorage.setItem('token', token)
@@ -66,7 +62,7 @@ export class LoginService {
           sessionStorage.setItem('user_id',user_id);
           this.route.navigate(['/dashboard']);
         })
-        .catch((error) => console.log(error));
+        .catch(error=>error)
     }
 
 }
