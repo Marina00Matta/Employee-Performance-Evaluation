@@ -20,7 +20,7 @@ export class UserEditFormComponent implements OnInit {
   id:number;
   roles;
   grps;
-  
+  group=[];
   filedata:any;
     fileEvent(e){      
     this.filedata = e.target.files[0];
@@ -39,7 +39,9 @@ export class UserEditFormComponent implements OnInit {
 
     this._userservice.getUserById(this.id).subscribe(data =>{
       this.user=data ;
-      console.log(data);
+      data['groups'].forEach(ele => {
+         this.group.push(ele.toString());
+      });
     });
 
     this._userservice.getUsers().subscribe((res:any) =>{

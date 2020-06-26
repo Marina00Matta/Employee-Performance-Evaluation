@@ -9,10 +9,9 @@ import { ActivatedRoute , Router} from '@angular/router';
   styleUrls: ['./edit-position-form.component.css']
 })
 export class EditPositionFormComponent implements OnInit {
-  roles;
+  roles=[];
   role_id;
   role;
-  selectedElement;
   constructor(private _rolesService: RolesService,
     private route:ActivatedRoute ,
     private router:Router) { }
@@ -21,17 +20,22 @@ export class EditPositionFormComponent implements OnInit {
     this.route.params.subscribe(params =>{
       this.role_id = +params['id'];
       }); 
+
     this._rolesService.getRoles().subscribe(data =>
-      {this.roles =data;
+      { console.log(data);
+        for (let ele in data) {          
+          if(data[ele].name !== 'superadmin')
+           {
+            this.roles.push(data[ele]);
+           }
+        }        
       });
+
     this._rolesService.getRoleById(this.role_id).subscribe(data=>
       {this.role = data;
-        this.selectedElement = this.roles[1];
-        console.log('ele',this.selectedElement);
+       console.log(data);
       });
-    //  this.selectedElement= [
-    //     {id:1,name:'admin'},
-    //     {id:2,name:'manager'}];  
+   
   }
 
   onSubmit(form: NgForm){

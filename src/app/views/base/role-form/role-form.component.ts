@@ -11,14 +11,20 @@ import { ActivatedRoute , Router} from '@angular/router';
   styleUrls: ['./role-form.component.css']
 })
 export class RoleFormComponent implements OnInit {
-  roles;
+  roles=[];
   constructor(private _rolesService: RolesService,
     private route:ActivatedRoute ,
     private router:Router) { }
 
   ngOnInit(): void {
     this._rolesService.getRoles().subscribe(data =>
-      {this.roles =data;
+      { 
+        for (let ele in data) {          
+          if(data[ele].name !== 'superadmin')
+           {
+            this.roles.push(data[ele]);
+           }
+        }        
       });
   }
 

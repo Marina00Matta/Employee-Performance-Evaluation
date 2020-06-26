@@ -6,7 +6,7 @@
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
-                <form #userlogin="ngForm" (ngSubmit)="submit(userlogin.value)">
+                <form #userlogin="ngForm" (ngSubmit)="submit(userlogin.value)" >
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
                   <div class="input-group mb-3">
@@ -23,8 +23,10 @@
                     <input type="password" class="form-control"  name="password" placeholder="Password" [(ngModel)]="password" required>
                   </div>
                   <div class="row" *ngIf="error" class="text-danger">
-                    This data invalid
-                    
+                    <div class="col-6">
+                      Invalid User Data
+                    </div>
+                    <br/>
                   </div>
                   <div class="row">
                     <div class="col-6">

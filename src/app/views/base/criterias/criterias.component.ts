@@ -22,7 +22,7 @@ export class CriteriasComponent implements OnInit {
   trashCriterias;
   types; 
   grps;
-  roles;
+  roles=[];
   editableCriteriaObj : Criteria;
   editCriteria : FormGroup;
   constructor(private _criteriasService: CriteriasService,private modalService: BsModalService,
@@ -50,9 +50,16 @@ private _rolesService: RolesService,) { }
     })
   }
   getRoles(){
-    this._rolesService.getRoles().subscribe(roleData =>{
-      this.roles=roleData;
-    });
+    this._rolesService.getRoles().subscribe(data =>
+      { 
+        for (let ele in data) {          
+          if(data[ele].name !== 'superadmin')
+           {
+            this.roles.push(data[ele]);
+           }
+        }        
+      });
+   
   }
 
   deleteFunction(id){
@@ -63,9 +70,9 @@ private _rolesService: RolesService,) { }
     this.getCriteriaList();    
   }
   getCriteriaList(){
-    this._criteriasService.getCriteria().subscribe(data =>{
-      console.log(data)
-      this.criterias = data;
+    this._criteriasService.getCriteria().subscribe((res:any) =>{
+      console.log(res.data)
+      this.criterias = res.data;
     })
   }
   
@@ -89,11 +96,10 @@ private _rolesService: RolesService,) { }
 
   closeEditModal(){
     this.modalEditRef.hide();
-  }
+  }                    
 
   
-  edit(value) {
-    
+  edit(value) {    
     console.log("value",value)
     this._criteriasService.editCriteria(value,this.editableCriteriaObj.id)
       .subscribe(result => {
