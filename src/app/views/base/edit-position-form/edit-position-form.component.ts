@@ -23,7 +23,7 @@ export class EditPositionFormComponent implements OnInit {
       }); 
 
     this._rolesService.getRoles().subscribe(data =>
-      { 
+      { console.log(data);
         for (let ele in data) {          
           if(data[ele].name !== 'superadmin')
            {

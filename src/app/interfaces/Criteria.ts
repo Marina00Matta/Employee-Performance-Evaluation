@@ -7,4 +7,5 @@ export interface Criteria{
     validator: string,
     group_id: [], 
     roles:[],
+    type:string
 }

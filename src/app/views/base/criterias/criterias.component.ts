@@ -1,4 +1,4 @@
-import { Component, OnInit,TemplateRef } from '@angular/core';
+import { Component, OnInit,TemplateRef,ViewChild } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CriteriaType } from 'src/app/interfaces/CriteriaType';
@@ -9,7 +9,7 @@ import { FireAlertService } from 'src/app/services/fire-alert.service';
 import { ActivatedRoute , Router} from '@angular/router';
 import { GroupService } from '../../../services/group.service';
 import { RolesService } from '../../../services/roles.service';
-
+import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 
 
@@ -18,26 +18,40 @@ import { RolesService } from '../../../services/roles.service';
   templateUrl: './criterias.component.html'
 })
 export class CriteriasComponent implements OnInit {
+
+  @ViewChild(DatatableComponent) myFilterTable: DatatableComponent;
   criterias;
   trashCriterias;
-  types; 
+  types;
+  temp; 
   grps;
+  dtOptions: DataTables.Settings = {};
   roles=[];
+  title = 'angulardatatables';
   editableCriteriaObj : Criteria;
   editCriteria : FormGroup;
   constructor(private _criteriasService: CriteriasService,private modalService: BsModalService,
     private alert:FireAlertService, private route:ActivatedRoute ,
-    private router:Router ,
-private _grpService:GroupService,
-private _rolesService: RolesService,) { }
+    private router:Router ,private _grpService:GroupService,private _rolesService: RolesService,) { }
 
   ngOnInit(): void {
-    this.getCriteriaList();
     this.getCriteriaTypeList();
     this.getGroups();
     this.getRoles();
-
+    this.getCriteriaList();
   }
+
+  refreshCriteria(){
+    console.log('cc',this.criterias)
+    if(this.criterias){
+      this.criterias.forEach(element => {
+        let data =  this.types.filter(elem => elem['id'] == element['type_id']);
+        element['type'] = data[0]['type'];
+      });
+    }
+  }
+
+
   getCriteriaTypeList(){
     this._criteriasService.getCriteriaTypes().subscribe(dataType =>{
       console.log(dataType)
@@ -70,9 +84,12 @@ private _rolesService: RolesService,) { }
     this.getCriteriaList();    
   }
   getCriteriaList(){
-    this._criteriasService.getCriteria().subscribe(data =>{
-      console.log(data)
-      this.criterias = data;
+
+    this._criteriasService.getCriteria().subscribe((res:any) =>{
+      console.log(res.data)
+      this.criterias = res.data;
+      this.temp = res.data;
+      this.refreshCriteria();
     })
   }
   
@@ -96,10 +113,10 @@ private _rolesService: RolesService,) { }
 
   closeEditModal(){
     this.modalEditRef.hide();
-  }
+  }                    
 
   
-  edit(value) {
+  edit(value) {    
     console.log("value",value)
     this._criteriasService.editCriteria(value,this.editableCriteriaObj.id)
       .subscribe(result => {
@@ -117,6 +134,22 @@ private _rolesService: RolesService,) { }
       });
   
   }
+
+  updateFilter(event) {
+    const val = event.target.value.toString().toLowerCase().trim();
+    // filter our data
+    const temp = this.temp.filter(function (d) {
+      console.log("d",d)
+      return (d.name.toString().toLowerCase().indexOf(val) !== -1 ) ||
+      (d.type.toString().toLowerCase().indexOf(val) !== -1 ) ||
+      !val;
+    });
+    // update the rows
+    this.criterias = temp;
+    // Whenever the filter changes, always go back to the first page
+    this.myFilterTable.offset = 0;
+  }
+
       get name(){return this.editCriteria.get('name');}
 
       get type_id(){return this.editCriteria.get('type_id');}
