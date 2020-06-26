@@ -12,6 +12,7 @@ export class EditPositionFormComponent implements OnInit {
   roles;
   role_id;
   role;
+  selectedElement;
   constructor(private _rolesService: RolesService,
     private route:ActivatedRoute ,
     private router:Router) { }
@@ -25,7 +26,12 @@ export class EditPositionFormComponent implements OnInit {
       });
     this._rolesService.getRoleById(this.role_id).subscribe(data=>
       {this.role = data;
-      });  
+        this.selectedElement = this.roles[1];
+        console.log('ele',this.selectedElement);
+      });
+    //  this.selectedElement= [
+    //     {id:1,name:'admin'},
+    //     {id:2,name:'manager'}];  
   }
 
   onSubmit(form: NgForm){
