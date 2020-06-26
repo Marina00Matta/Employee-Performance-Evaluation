@@ -87,20 +87,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    <ng-template #EditScreen>
     <div class="modal-header">
       <h4 class="modal-title">Edit Criteria</h4>
@@ -121,12 +107,12 @@
           <p class="my-2">Group</p>
        
          <select id="groups" formControlName="group_id" class="form-control"  required multiple size="2">
-           <option *ngFor="let grp of grps" value={{grp.id}}>{{grp?.name}}</option>
+           <option *ngFor="let grp of grps" [ngValue]="grp.id">{{grp?.name}}</option>
          </select>
     
         <p class="my-2">Position</p>
-          <select id="roles" formControlName="roles" class="form-control"   multiple size="3">
-            <option *ngFor="let role of roles" value={{role.id}}>{{role?.name}}</option>
+          <select id="roles" formControlName="roles" class="form-control"  multiple size="3">
+            <option *ngFor="let role of roles" [ngValue]="role.id">{{role?.name}}</option>
           </select>
         
         <div class="modal-footer border-0">

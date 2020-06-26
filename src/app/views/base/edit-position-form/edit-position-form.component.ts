@@ -12,7 +12,7 @@ export class EditPositionFormComponent implements OnInit {
   roles=[];
   role_id;
   role;
-  selected= [ ];
+  selected=[];
   constructor(private _rolesService: RolesService,
     private route:ActivatedRoute ,
     private router:Router) { }
@@ -37,6 +37,8 @@ export class EditPositionFormComponent implements OnInit {
       {this.role = data;
         data['permissions'].forEach(ele => {
           this.selected.push(ele.toString());
+          console.log(this.selected );
+          
        }); 
       });  
   }

@@ -16,9 +16,9 @@
           </div>
 
           <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="roles">Evaluated Postions</label>
+            <label class="col-md-3 col-form-label" for="permission">Evaluated Postions</label>
              <div class="col-md-9" >
-              <select id="roles" ngModel name="permissions" [(ngModel)]="selected" class="form-control" required multiple size="3">
+              <select id="permission" ngModel  [(ngModel)]="selected" name="permissions" class="form-control" multiple size="3">
                 <option *ngFor="let role of roles" value={{role.id}}>{{role?.name}}</option>
               </select>
             </div>
