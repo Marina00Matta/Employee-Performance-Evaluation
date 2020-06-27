@@ -42,6 +42,8 @@ export class UserEditFormComponent implements OnInit {
       data['groups'].forEach(ele => {
          this.group.push(ele.toString());
       });
+      console.log(this.group);
+      
     });
 
     this._userservice.getUsers().subscribe((res:any) =>{

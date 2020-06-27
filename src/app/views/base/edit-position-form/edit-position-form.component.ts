@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RolesService } from '../../../services/roles.service';
 import { ActivatedRoute , Router} from '@angular/router';
@@ -12,10 +13,12 @@ export class EditPositionFormComponent implements OnInit {
   roles=[];
   role_id;
   role;
-  selected=[];
+  permissions=[];
+
   constructor(private _rolesService: RolesService,
     private route:ActivatedRoute ,
     private router:Router) { }
+
 
   ngOnInit(): void {
     this.route.params.subscribe(params =>{
@@ -34,12 +37,13 @@ export class EditPositionFormComponent implements OnInit {
       });
 
     this._rolesService.getRoleById(this.role_id).subscribe(data=>
-      {this.role = data;
-        data['permissions'].forEach(ele => {
-          this.selected.push(ele.toString());
-          console.log(this.selected );
-          
+      {
+        this.role = data;
+        this.role['permissions'].forEach(ele => {
+          this.permissions.push(ele.toString());
        }); 
+       console.log(this.permissions);
+       
       });  
   }
 
