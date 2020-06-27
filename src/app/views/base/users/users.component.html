@@ -8,6 +8,11 @@
           <i class="fa fa-align-justify"></i> Users
         </div>
         <div class="card-body">
+
+          <div class="btn-group btn-group-md ml-2" style="float:left;margin-bottom: 5px;">
+            <input type="text"  placeholder="Search..." (keyup)="updateFilter($event)" />
+          </div>
+
           <div class="btn-group btn-group-md ml-2">
             <button type="button" class="btn  btn-success  mb-lg-3 mr-3"  [routerLink]="['/base/user-form']">New Employee </button>
           </div>
@@ -17,7 +22,7 @@
           <div class="btn-group btn-group-md ml-2">
             <button type="button" class="btn  btn-danger mb-lg-3 mr-3"  [routerLink]="['/base/trashed-users']">See Trash</button>
           </div>
-          <table class="table table-bordered">
+         <!-- <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Image</th>
@@ -59,7 +64,70 @@
                </ng-template>
               </tr>
             </tbody>
-          </table>
+          </table>-->
+
+          <ngx-datatable #myFilterTable class="table table-striped table-bordered table-sm row-border hover test material" [rows]="filteredUsers" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+          [rowHeight]="150"  [sorts]="[{prop: 'name', dir: 'desc'}]" [limit]="3">
+
+          <ngx-datatable-column name="Image" prop="avatar">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div>
+                <img class="img-circle elevation-2 mx-3" style="width:100px; height:100px" src="http://localhost:8000{{row.avatar}}" alt="No User Avatar"/>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Employee name" prop="name">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div style="margin-top: 40px;">{{row.name}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+
+
+          <ngx-datatable-column name="Email" prop="email">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div style="margin-top: 40px;">{{row.email}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Position" prop="role">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div style="margin-top: 40px;">{{row.role}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Hire Date" prop="hiring_at">
+            <ng-template let-row="row" ngx-datatable-cell-template> 
+              <div style="margin-top: 40px;">{{row.hiring_at| date: 'yyyy-MM-dd'}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+
+
+          <ngx-datatable-column name="Groups" prop="groups">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div style="margin-top: 40px;">{{row.groups}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Supervisor" prop="supervisorname">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div style="margin-top: 40px;">{{row.supervisorname}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Actions"> 
+            <ng-template let-row="row" ngx-datatable-cell-template>
+            <div class="btn-group btn-group-md ml-2" style="margin-top: 40px !important;margin-right: -7px; ">
+              <button type="button" class="btn btn-block btn-warning"  [routerLink]="['/base/edit_user',row.id]">Edit</button>
+            </div>
+            <div class="btn-group btn-group-md ml-2" style="margin-top: 40px !important; width:55px;">
+              <button type="button" class="btn btn-block btn-danger" (click)="deleteUser(row.id)">Delete</button>
+            </div>
+          </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+
+
+
+
         </div>
       </div>
     </div>

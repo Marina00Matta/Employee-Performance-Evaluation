@@ -7,13 +7,17 @@
           <i class="fa fa-align-justify"></i> Positions
         </div>
         <div class="card-body">
+
+          <div class="btn-group btn-group-md ml-2" style="float:left;margin-bottom: 5px;">
+            <input type="text"  placeholder="Search..." (keyup)="updateFilter($event)" />
+          </div>
           <div class="btn-group btn-group-md ml-2">
             <button type="button" class="btn  btn-success mb-lg-3 mr-3"  [routerLink]="['/base/position-forms']">New Position</button>
           </div>
           <!-- <div class="btn-group btn-group-md ml-2">
             <button type="button" class="btn  btn-success mb-lg-3 mr-3"  [routerLink]="['/base/trashed-criterias']">See Trash</button>
           </div> -->
-          <table class="table table-bordered">
+        <!--  <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Position Name</th>
@@ -27,14 +31,50 @@
                 <td>  
                <div class="btn-group btn-group-md ml-2">
                   <button type="button" class="btn btn-block btn-warning" [routerLink]="['/base/edit-position',role.id]">Edit</button>
-                </div>
+                </div>-->
                 <!-- <div class="btn-group btn-group-md ml-2">
                     <button type="button" class="btn btn-block btn-danger" (click) = deleteFunction(criteria.id)>Delete</button>
                   </div> -->
-              </td>
+            <!--  </td>
               </tr>
             </tbody>
-          </table>
+          </table>-->
+          <ngx-datatable #myFilterTable class="table table-striped table-bordered table-sm row-border hover test material" [rows]="roles" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+          [rowHeight]="50"  [sorts]="[{prop: 'name', dir: 'desc'}]" [limit]="4">
+
+          <ngx-datatable-column name=" Role name" prop="name">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              {{row.name}}
+            </ng-template>
+          </ngx-datatable-column>
+
+
+          <ngx-datatable-column>
+            <ng-template let-row="row" ngx-datatable-cell-template>
+            <div class="btn-group btn-group-md ml-2" style="margin-top: -5px !important;">
+              <button type="button" class="btn btn-block btn-warning" [routerLink]="['/base/edit-position',row.id]">Edit</button>
+            </div>
+           
+          </ng-template>
+          </ngx-datatable-column>
+
+        </ngx-datatable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
       </div>
     </div>
